@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class s_Player : MonoBehaviour
 {
@@ -27,13 +28,13 @@ public class s_Player : MonoBehaviour
             //tag確認
             if (collision.tag == "safe")
             {
-                //マウス右クリックで成功
-                if (Input.GetMouseButtonDown(1))
+                //マウス左クリックで成功
+                if (Input.GetMouseButtonDown(0))
                 {
                     check = Check.Success;
                     Debug.Log("成功");
                 }
-                else if(Input.GetMouseButtonDown(0))
+                else if(Input.GetMouseButtonDown(1))
                 {
                     check = Check.Out;
                     Debug.Log("失敗");
@@ -43,13 +44,13 @@ public class s_Player : MonoBehaviour
             }
             else if(collision.tag == "out")
             {
-                //マウス左クリックで成功
-                if (Input.GetMouseButtonDown(0))
+                //マウス右クリックで成功
+                if (Input.GetMouseButtonDown(1))
                 {
                     check = Check.Success;
                     Debug.Log("成功");
                 }
-                if (Input.GetMouseButtonDown(1))
+                else if (Input.GetMouseButtonDown(0))
                 {
                     check = Check.Out;
                     Debug.Log("失敗");
@@ -79,6 +80,7 @@ public class s_Player : MonoBehaviour
         if (HP <= 0)
         {
             Debug.Log("GAMEOVER");
+            SceneManager.LoadScene("Result");
         }
     }
 
