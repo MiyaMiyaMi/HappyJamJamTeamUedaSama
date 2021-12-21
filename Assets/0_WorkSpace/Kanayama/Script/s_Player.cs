@@ -37,6 +37,7 @@ public class s_Player : MonoBehaviour
                 {
                     check = Check.Out;
                     Debug.Log("Ž¸”s");
+                    HP--;
                 }
                 
             }
@@ -52,6 +53,7 @@ public class s_Player : MonoBehaviour
                 {
                     check = Check.Out;
                     Debug.Log("Ž¸”s");
+                    HP--;
                 }
             }
             
@@ -61,17 +63,19 @@ public class s_Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        check = Check.Null;
+        if (check != Check.Null)
+        {
+            check = Check.Null;
+        }
+        else
+        {
+            HP--;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(check == Check.Out)
-        {
-            HP--;
-        }
-        
         if (HP <= 0)
         {
             Debug.Log("GAMEOVER");
