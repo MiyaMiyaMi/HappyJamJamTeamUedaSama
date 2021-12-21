@@ -58,10 +58,11 @@ public class TitleAction : MonoBehaviour
 
     public void PushRanking()
     {
-        Debug.Log("h‰Ÿ‚³‚ê‚½");
+        Debug.Log("r‰Ÿ‚³‚ê‚½");
 
         if (situation == Situation.Title)
             situation = Situation.Ranking;
+        naichilab.RankingLoader.Instance.SendScoreAndShowRanking(0, 0, "RankingGetOnly");
     }
 
     public void PushCancel()
