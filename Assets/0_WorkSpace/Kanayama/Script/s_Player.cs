@@ -72,7 +72,7 @@ public class s_Player : MonoBehaviour
             HP--;
         }
         
-        if (HP == 0)
+        if (HP <= 0)
         {
             Debug.Log("GAMEOVER");
         }
