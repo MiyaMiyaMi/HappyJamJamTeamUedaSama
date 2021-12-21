@@ -50,6 +50,8 @@ public class TitleAction : MonoBehaviour
             situation = Situation.HowToPlay;
             PageCnt = 0;
             Display.GetComponent<Image>().sprite = sprites[PageCnt];
+            Display.SetActive(true);
+            Cancel.SetActive(true);
         }
 
     }
