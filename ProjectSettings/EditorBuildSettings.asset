@@ -6,12 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/0_WorkSpace/Hosomi/Scene/Title.unity
+    guid: 2b1f01b43db35f94bb0efdd58ce8d777
+  - enabled: 1
+    path: Assets/0_WorkSpace/Miyachi/Scene/Main.unity
+    guid: b7fbced255a366a42a5e24e137e681a0
   - enabled: 1
     path: Assets/0_WorkSpace/Miyachi/Scene/Ranking.unity
     guid: 152244f5855414ac4a3874f14efa583c
   - enabled: 1
     path: Assets/0_WorkSpace/Miyachi/Scene/RankingGetOnly.unity
     guid: 3ca71808e55862647b99ceeac2bd3530
+  - enabled: 1
+    path: Assets/0_WorkSpace/Miyachi/Scene/Result.unity
+    guid: dd7a47fed923b6d41b00df2f6aa45231
   m_configObjects: {}
