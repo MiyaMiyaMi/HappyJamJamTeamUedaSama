@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class s_Player : MonoBehaviour
 {
-    //[SerializeField] int HP = 1;
+    [SerializeField] int HP = 1;
 
     enum Check
     {
@@ -67,14 +67,15 @@ public class s_Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(check == Check.Out)
-        //{
-        //    HP--;
-        //}
-        //
-        //if (HP == 0)
-        //{ 
-        //}
+        if(check == Check.Out)
+        {
+            HP--;
+        }
+        
+        if (HP == 0)
+        {
+            Debug.Log("GAMEOVER");
+        }
     }
 
 }
