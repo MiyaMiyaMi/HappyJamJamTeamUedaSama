@@ -66,7 +66,7 @@ public class s_Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "out" || collision.gameObject.tag == "safe")
         {
-            Debug.Log(collision.gameObject.tag);
+
             if (check != Check.Null)
             {
                 check = Check.Null;
