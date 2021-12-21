@@ -28,13 +28,13 @@ public class s_Player : MonoBehaviour
             //tag確認
             if (collision.tag == "safe")
             {
-                //マウス左クリックで成功
-                if (Input.GetMouseButtonDown(0))
+                //マウス右クリックで成功
+                if (Input.GetMouseButton(1))
                 {
                     check = Check.Success;
                     Debug.Log("成功");
                 }
-                else if(Input.GetMouseButtonDown(1))
+                else if(Input.GetMouseButton(0))
                 {
                     check = Check.Out;
                     Debug.Log("失敗");
@@ -44,13 +44,13 @@ public class s_Player : MonoBehaviour
             }
             else if(collision.tag == "out")
             {
-                //マウス右クリックで成功
-                if (Input.GetMouseButtonDown(1))
+                //マウス左クリックで成功
+                if (Input.GetMouseButton(0))
                 {
                     check = Check.Success;
                     Debug.Log("成功");
                 }
-                else if (Input.GetMouseButtonDown(0))
+                else if (Input.GetMouseButton(1))
                 {
                     check = Check.Out;
                     Debug.Log("失敗");
@@ -64,13 +64,17 @@ public class s_Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (check != Check.Null)
+        if (collision.gameObject.tag == "out" || collision.gameObject.tag == "safe")
         {
-            check = Check.Null;
-        }
-        else
-        {
-            HP--;
+            Debug.Log(collision.gameObject.tag);
+            if (check != Check.Null)
+            {
+                check = Check.Null;
+            }
+            else
+            {
+                HP--;
+            }
         }
     }
 
