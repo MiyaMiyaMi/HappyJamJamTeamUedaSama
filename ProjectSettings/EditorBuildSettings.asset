@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/0_WorkSpace/Miyachi/naichilab/unity-simple-ranking/Scenes/Ranking.unity
+    path: Assets/0_WorkSpace/Miyachi/Scene/Ranking.unity
     guid: 152244f5855414ac4a3874f14efa583c
+  - enabled: 1
+    path: Assets/0_WorkSpace/Miyachi/Scene/RankingGetOnly.unity
+    guid: 3ca71808e55862647b99ceeac2bd3530
   m_configObjects: {}
