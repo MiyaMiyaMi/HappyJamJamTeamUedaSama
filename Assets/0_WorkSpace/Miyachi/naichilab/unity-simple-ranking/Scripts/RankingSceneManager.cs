@@ -13,7 +13,7 @@ namespace naichilab
         private const string COLUMN_SCORE = "score";
         private const string COLUMN_NAME = "name";
 
-
+        [SerializeField] bool IsScoreGet;
         [SerializeField] Text captionLabel;
         [SerializeField] Text scoreLabel;
         [SerializeField] Text highScoreLabel;
@@ -55,6 +55,7 @@ namespace naichilab
         /// <value>The name of the inputted.</value>
         private string InputtedNameForSave
         {
+           
             get
             {
                 if (string.IsNullOrEmpty(nameInputField.text))
@@ -68,7 +69,10 @@ namespace naichilab
 
         void Start()
         {
-            sendScoreButton.interactable = false;
+            if (!IsScoreGet)
+            {
+                sendScoreButton.interactable = false;
+            }
             _board = RankingLoader.Instance.CurrentRanking;
             _lastScore = RankingLoader.Instance.LastScore;
 
@@ -79,9 +83,12 @@ namespace naichilab
 
         IEnumerator GetHighScoreAndRankingBoard()
         {
-            scoreLabel.text = _lastScore.TextForDisplay;
-            captionLabel.text = string.Format("{0}ランキング", _board.BoardName);
+            if (!IsScoreGet)
+            {
+                scoreLabel.text = _lastScore.TextForDisplay;
 
+                captionLabel.text = string.Format("{0}ランキング", _board.BoardName);
+            }
             //ハイスコア取得
             {
                 highScoreLabel.text = "取得中...";
@@ -97,8 +104,10 @@ namespace naichilab
 
                     var s = _board.BuildScore(_ncmbRecord[COLUMN_SCORE].ToString());
                     highScoreLabel.text = s != null ? s.TextForDisplay : "エラー";
-
-                    nameInputField.text = _ncmbRecord[COLUMN_NAME].ToString();
+                    if (!IsScoreGet)
+                    {
+                        nameInputField.text = _ncmbRecord[COLUMN_NAME].ToString();
+                    }
                 }
                 else
                 {
@@ -111,26 +120,31 @@ namespace naichilab
             yield return StartCoroutine(LoadRankingBoard());
 
             //スコア更新している場合、ボタン有効化
-            if (_ncmbRecord == null)
+            if (!IsScoreGet)
             {
-                sendScoreButton.interactable = true;
-            }
-            else
-            {
-                var highScore = _board.BuildScore(_ncmbRecord[COLUMN_SCORE].ToString());
-
-                if (_board.Order == ScoreOrder.OrderByAscending)
+                if (_ncmbRecord == null)
                 {
-                    //数値が低い方が高スコア
-                    sendScoreButton.interactable = _lastScore.Value < highScore.Value;
+
+                    sendScoreButton.interactable = true;
+
                 }
                 else
                 {
-                    //数値が高い方が高スコア
-                    sendScoreButton.interactable = highScore.Value < _lastScore.Value;
-                }
+                    var highScore = _board.BuildScore(_ncmbRecord[COLUMN_SCORE].ToString());
 
-             //   Debug.Log(string.Format("登録済みスコア:{0} 今回スコア:{1} ハイスコア更新:{2}", highScore.Value, _lastScore.Value,sendScoreButton.interactable));
+                    if (_board.Order == ScoreOrder.OrderByAscending)
+                    {
+                        //数値が低い方が高スコア
+                        sendScoreButton.interactable = _lastScore.Value < highScore.Value;
+                    }
+                    else
+                    {
+                        //数値が高い方が高スコア
+                        sendScoreButton.interactable = highScore.Value < _lastScore.Value;
+                    }
+
+                    //   Debug.Log(string.Format("登録済みスコア:{0} 今回スコア:{1} ハイスコア更新:{2}", highScore.Value, _lastScore.Value,sendScoreButton.interactable));
+                }
             }
         }
 
@@ -142,9 +156,12 @@ namespace naichilab
 
         private IEnumerator SendScoreEnumerator()
         {
-            sendScoreButton.interactable = false;
-            highScoreLabel.text = "送信中...";
+            if (!IsScoreGet)
+            {
+                sendScoreButton.interactable = false;
 
+                highScoreLabel.text = "送信中...";
+            }
             //ハイスコア送信
             if (_ncmbRecord == null)
             {
@@ -152,7 +169,10 @@ namespace naichilab
                 _ncmbRecord.ObjectId = ObjectID;
             }
 
-            _ncmbRecord[COLUMN_NAME] = InputtedNameForSave;
+            if (!IsScoreGet)
+            {
+                _ncmbRecord[COLUMN_NAME] = InputtedNameForSave;
+            }
             _ncmbRecord[COLUMN_SCORE] = _lastScore.Value;
             NCMBException errorResult = null;
 
@@ -236,7 +256,17 @@ namespace naichilab
         public void OnCloseButtonClick()
         {
             closeButton.interactable = false;
-            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Ranking");
+
+            if (!IsScoreGet)
+            {
+                UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Ranking");
+            }
+            else
+            {
+                UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("RankingGetOnly");
+            }
+            
+
         }
 
         private void MaskOffOn()

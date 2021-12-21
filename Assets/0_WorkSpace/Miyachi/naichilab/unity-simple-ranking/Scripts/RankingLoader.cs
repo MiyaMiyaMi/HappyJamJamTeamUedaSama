@@ -62,11 +62,11 @@ namespace naichilab
         /// </summary>
         /// <param name="time"></param>
         /// <param name="boardId"></param>
-        public void SendScoreAndShowRanking(TimeSpan time, int boardId = 0)
+        public void SendScoreAndShowRanking(TimeSpan time, int boardId = 0, string rankName = null)
         {
             var board = RankingBoards.GetRankingInfo(boardId);
             var sc = new TimeScore(time, board.CustomFormat);
-            SendScoreAndShowRanking(sc, board);
+            SendScoreAndShowRanking(sc, board, rankName);
         }
 
         /// <summary>
@@ -74,14 +74,14 @@ namespace naichilab
         /// </summary>
         /// <param name="score"></param>
         /// <param name="boardId"></param>
-        public void SendScoreAndShowRanking(double score, int boardId = 0)
+        public void SendScoreAndShowRanking(double score, int boardId = 0, string rankName = null)
         {
             var board = RankingBoards.GetRankingInfo(boardId);
             var sc = new NumberScore(score, board.CustomFormat);
-            SendScoreAndShowRanking(sc, board);
+            SendScoreAndShowRanking(sc, board, rankName);
         }
 
-        private void SendScoreAndShowRanking(IScore score, RankingInfo board)
+        private void SendScoreAndShowRanking(IScore score, RankingInfo board, string rankName)
         {
             if (board.Type != score.Type)
             {
@@ -90,7 +90,7 @@ namespace naichilab
 
             CurrentRanking = board;
             LastScore = score;
-            SceneManager.LoadScene("Ranking", LoadSceneMode.Additive);
+            SceneManager.LoadScene(rankName, LoadSceneMode.Additive);
         }
     }
 }
