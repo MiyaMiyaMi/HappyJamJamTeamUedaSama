@@ -8,6 +8,7 @@ public class s_Player : MonoBehaviour
     [SerializeField] int HP = 1;
 
     Animator AnimP;
+    GameObject heart;
 
     enum Check
     {
@@ -113,7 +114,6 @@ public class s_Player : MonoBehaviour
             }
 
         }
-
 
 
         if (HP <= 0)
