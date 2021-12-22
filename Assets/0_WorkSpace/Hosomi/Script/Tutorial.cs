@@ -15,6 +15,7 @@ public class Tutorial : MonoBehaviour
 
     [SerializeField, Header("速度を戻すときの値")] float speed = 3;
     int StartCnt;                   //開始までのカウント　２になるとPlay開始
+    bool StartFrg;
     [SerializeField, Header("0:Mouse 1:MouseLeft 2:MouseRight")] GameObject[] tutorialMouse;
     [SerializeField, Header("0:TutorialOut 1:TutorialSafe 2:StratSlide")] GameObject[] tutorialObjects;
     GameObject objectSpawn;         //接触したオブジェクトの保存  
@@ -22,6 +23,9 @@ public class Tutorial : MonoBehaviour
     void Start()
     {
         tutorial = TutorialCheck.Null;
+        StartCnt = 0;
+        StartFrg = false;
+
         for (int i = 0; i < tutorialObjects.Length; i++)
         {
             tutorialMouse[i].SetActive(false);
@@ -84,9 +88,13 @@ public class Tutorial : MonoBehaviour
                     break;
             }
         }
-        else
+        else 
         {
-            Instantiate(tutorialObjects[2], tutorialObjects[2].transform.position, Quaternion.identity);
+            if (!StartFrg)
+            {
+                Instantiate(tutorialObjects[2], tutorialObjects[2].transform.position, Quaternion.identity);
+                StartFrg = true;
+            }
         }
     }
 }
