@@ -7,6 +7,8 @@ public class s_Player : MonoBehaviour
 {
     [SerializeField] int HP = 1;
 
+    Animator AnimP;
+
     enum Check
     {
         Null,
@@ -19,6 +21,8 @@ public class s_Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AnimP = gameObject.GetComponent<Animator>();
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -81,6 +85,36 @@ public class s_Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(check == Check.Null)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                //å®ÇΩÇΩÇ´
+                AnimP.SetTrigger("tap.trg");
+                //ÉJÉìÉjÉìÉOëjé~
+                if (check == Check.Success)
+                {
+                    AnimP.SetTrigger("success.trg");
+                    Debug.Log("ê¨å˜");
+                }
+                //åÎêR
+                else if(check == Check.Out)
+                {
+                    AnimP.SetTrigger("bad.trg");
+                    Debug.Log("é∏îs");
+                }
+            }
+            //å©ì¶Çµ
+            else if(Input.GetMouseButton(1))
+            {
+                AnimP.SetTrigger("miss.trg");
+                Debug.Log("å©ì¶Çµ");
+            }
+
+        }
+
+
+
         if (HP <= 0)
         {
             Debug.Log("GAMEOVER");
