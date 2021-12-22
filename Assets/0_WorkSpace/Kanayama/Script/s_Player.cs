@@ -12,7 +12,7 @@ public class s_Player : MonoBehaviour
     Animator AnimP;
     GameObject heart;
     [SerializeField] Text zyoutai;
-
+    private int score;
 
     enum Check
     {
@@ -29,12 +29,14 @@ public class s_Player : MonoBehaviour
         AnimP = gameObject.GetComponent<Animator>();
 
         oldHp = HP;
-      
+        score = 0;
+
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(check == Check.Null)
+        if (check == Check.Null)
         {
             //tagämîF
             if (collision.tag == "safe")
@@ -45,14 +47,14 @@ public class s_Player : MonoBehaviour
                     check = Check.Success;
                     Debug.Log("ê¨å˜");
                 }
-                else if(Input.GetMouseButton(0))
+                else if (Input.GetMouseButton(0))
                 {
                     check = Check.Out;
                     Debug.Log("é∏îs");
                 }
-                
+
             }
-            else if(collision.tag == "out")
+            else if (collision.tag == "out")
             {
                 //É}ÉEÉXç∂ÉNÉäÉbÉNÇ≈ê¨å˜
                 if (Input.GetMouseButton(0))
@@ -66,7 +68,7 @@ public class s_Player : MonoBehaviour
                     Debug.Log("é∏îs");
                 }
             }
-            
+
         }
 
     }
@@ -74,46 +76,64 @@ public class s_Player : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
 
+        if (collision.gameObject.tag == "safe")
+        {
+            if (check != Check.Null)
+            {
+                //å©ì¶Çµ
+                if (check == Check.Success)
+                {
+                    score++;
+                }
+                //å®ÇΩÇΩÇ´(åÎêR)
+                else if (check == Check.Out)
+                {
+                    //å®ÇΩÇΩÇ´
+                    AnimP.SetTrigger("tap.trg");
+                    AnimP.SetTrigger("bad.trg");
+                    HP--;
+                }
+            }
+            else//å©ì¶Çµ
+            {
+                //å®ÇΩÇΩÇ´
+                AnimP.SetTrigger("tap.trg");
+                AnimP.SetTrigger("bad.trg");
+                HP--;
+            }
+        }
 
-
-
-        if (collision.gameObject.tag == "out" || collision.gameObject.tag == "safe")
+        if (collision.gameObject.tag == "out")
         {
 
             if (check != Check.Null)
             {
-         
-                //å®ÇΩÇΩÇ´
-                AnimP.SetTrigger("tap.trg");
                 //ÉJÉìÉjÉìÉOëjé~
                 if (check == Check.Success)
                 {
+                    //å®ÇΩÇΩÇ´
+                    AnimP.SetTrigger("tap.trg");
                     AnimP.SetTrigger("success.trg");
-                    //  Debug.Log("ê¨å˜");
+                    score++;
+
                 }
-                //åÎêR
+                //å©ì¶Çµ
                 else if (check == Check.Out)
                 {
-                    AnimP.SetTrigger("bad.trg");
-                    SoundManager.Instance.PlaySE("bad");
-                    //  Debug.Log("é∏îs");
+                    //SoundManager.Instance.PlaySE("bad");
+                    AnimP.SetTrigger("miss.trg");
                     HP--;
                 }
-                check = Check.Null;
+
             }
             else
             {
-                //å©ì¶Çµ
-                if (Input.GetMouseButton(1))
-                {
-                    AnimP.SetTrigger("miss.trg");
-                    Debug.Log("å©ì¶Çµ");
-                }
-
-
+                AnimP.SetTrigger("miss.trg");
+                Debug.Log("å©ì¶Çµ");
                 HP--;
             }
         }
+        check = Check.Null;
         if (oldHp != HP)
         {
             if (SceneManager.GetActiveScene().name == "Main")
