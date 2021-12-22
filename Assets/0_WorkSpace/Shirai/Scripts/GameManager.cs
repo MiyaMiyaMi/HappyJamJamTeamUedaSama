@@ -32,13 +32,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SpawnValue = SpawnTime;
-<<<<<<< HEAD
         status = Status.Tutorial;
         Player.SetActive(false);
         TutorialGO.SetActive(true);
-=======
         status = Status.Play;
->>>>>>> 26bfc1f9a5b995080ca1bef0d9e9119d40458dcc
     }
 
     public void GameStart()
