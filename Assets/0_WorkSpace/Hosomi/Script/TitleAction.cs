@@ -11,13 +11,15 @@ public class TitleAction : MonoBehaviour
     {
         Title,
         HowToPlay,
+        Credit,
         Ranking
     };
     Situation situation;
 
     [SerializeField] GameObject Display;
     [SerializeField] GameObject Cancel;
-    [SerializeField,Header("最大ページ数")]int MaxPage;   
+    [SerializeField,Header("ルールの最大ページ数")]int RMaxPage;
+    [SerializeField, Header("クレジットの最大ページ数")] int CMaxPage;
     [SerializeField,Header("表示する画像")]Sprite[] sprites;
     int PageCnt;        //ページカウント用
 
@@ -46,7 +48,6 @@ public class TitleAction : MonoBehaviour
     {
         if (situation == Situation.Title)
         {
-            Debug.Log("h押された");
             situation = Situation.HowToPlay;
             PageCnt = 0;
             Display.GetComponent<Image>().sprite = sprites[PageCnt];
@@ -58,11 +59,23 @@ public class TitleAction : MonoBehaviour
 
     public void PushRanking()
     {
-        Debug.Log("r押された");
 
         if (situation == Situation.Title)
             situation = Situation.Ranking;
         naichilab.RankingLoader.Instance.SendScoreAndShowRanking(0, 0, "RankingGetOnly");
+    }
+
+    public void PushCredit()
+    {
+        if (situation == Situation.Title)
+        {
+            situation = Situation.Credit;
+            PageCnt += RMaxPage;
+            Display.GetComponent<Image>().sprite = sprites[PageCnt];
+            Display.SetActive(true);
+            Cancel.SetActive(true);
+        }
+
     }
 
     public void PushCancel()
@@ -90,7 +103,18 @@ public class TitleAction : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     PageCnt++;
-                    if(PageCnt >= MaxPage)
+                    if(PageCnt >= RMaxPage)
+                    {
+                        PushCancel();
+                    }
+                    Display.GetComponent<Image>().sprite = sprites[PageCnt];
+                }
+                break;
+            case Situation.Credit:
+                if (Input.GetMouseButtonDown(0))
+                {
+                    PageCnt++;
+                    if (PageCnt >= RMaxPage + CMaxPage)
                     {
                         PushCancel();
                     }
