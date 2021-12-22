@@ -266,6 +266,9 @@ namespace naichilab
             else
             {
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("RankingGetOnly");
+                TitleAction ta = GameObject.Find("TitleManager").GetComponent<TitleAction>();
+                ta.PushCancel();
+
             }
            
             

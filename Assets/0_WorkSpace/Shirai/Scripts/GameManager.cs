@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SpawnValue = SpawnTime;
-        status = Status.Tutorial;
+        status = Status.Play;
     }
 
 
