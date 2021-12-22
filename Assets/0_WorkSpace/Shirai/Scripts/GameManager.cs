@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
                 ACTime += Time.deltaTime;
                 if (ACTime <= 0.0f)
                 {
-                    ACTime = 10.0f;
+                    ACTime = 5.0f;
 
                     GameSpeed += 3.0f;
                 }
