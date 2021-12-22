@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Tutorial : MonoBehaviour
+public class Tutorial : SingletonMonoBehaviour<Tutorial>
 {
     enum TutorialCheck
     {
@@ -19,9 +19,11 @@ public class Tutorial : MonoBehaviour
     [SerializeField, Header("0:Mouse 1:MouseLeft 2:MouseRight")] GameObject[] tutorialMouse;
     [SerializeField, Header("0:TutorialOut 1:TutorialSafe 2:StratSlide")] GameObject[] tutorialObjects;
     GameObject objectSpawn;         //接触したオブジェクトの保存  
+    GameObject outS;
     // Start is called before the first frame update
     void Start()
     {
+
         tutorial = TutorialCheck.Null;
         StartCnt = 0;
         StartFrg = false;
@@ -37,19 +39,29 @@ public class Tutorial : MonoBehaviour
     {
         if(collision.tag == "out")
         {
+            outS = collision.gameObject;
             objectSpawn = collision.gameObject;
             objectSpawn.GetComponent<ObjectSpawn>().Speed = 0;
             tutorialMouse[0].SetActive(true);
             tutorialMouse[1].SetActive(true);
             tutorial = TutorialCheck.Cunning;
+            foreach (var b in GameObject.FindGameObjectsWithTag("back"))
+            {
+                b.GetComponent<BackScrolling>().IsStop = 0;
+            }
         }
         if(collision.tag == "safe")
         {
+            outS.GetComponent<ObjectSpawn>().Speed = 0;
             objectSpawn = collision.gameObject;
             objectSpawn.GetComponent<ObjectSpawn>().Speed = 0;
             tutorialMouse[0].SetActive(true);
             tutorialMouse[2].SetActive(true);
             tutorial = TutorialCheck.Through;
+            foreach (var b in GameObject.FindGameObjectsWithTag("back"))
+            {
+                b.GetComponent<BackScrolling>().IsStop = 0;
+            }
         }
     }
 
@@ -72,8 +84,12 @@ public class Tutorial : MonoBehaviour
                         tutorialMouse[1].SetActive(false);
                         Instantiate(tutorialObjects[1], tutorialObjects[1].transform.position, Quaternion.identity);
                         StartCnt++;
+                        foreach (var b in GameObject.FindGameObjectsWithTag("back"))
+                        {
+                            b.GetComponent<BackScrolling>().IsStop = 1;
+                        }
                     }
-
+             
                     break;
                 case TutorialCheck.Through:
                     //マウス右クリックで成功
@@ -83,7 +99,12 @@ public class Tutorial : MonoBehaviour
                         tutorialMouse[0].SetActive(false);
                         tutorialMouse[2].SetActive(false);
                         objectSpawn.GetComponent<ObjectSpawn>().Speed = speed;
+                        outS.GetComponent<ObjectSpawn>().Speed = speed;
                         StartCnt++;
+                        foreach (var b in GameObject.FindGameObjectsWithTag("back"))
+                        {
+                            b.GetComponent<BackScrolling>().IsStop = 1;
+                        }
                     }
                     break;
             }

@@ -30,7 +30,7 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
         students = new List<StrStudent>();
         timeValue = spownTime;
         stCount = 0;
-        score = 5;
+        score = DataManager.Instance.scoreD;
         naichilab.RankingLoader.Instance.SendScoreAndShowRanking(score, 0, "Ranking");
         FadeManager.Instance.FadeOutOnlySet();
         if (score != 0)

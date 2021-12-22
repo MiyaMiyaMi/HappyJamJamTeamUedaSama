@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class StartAction : MonoBehaviour
 {
-    GameObject gameManager;
+   // GameObject gameManager;
     [SerializeField,Header("スライド速度")] float speed;
 
     private void Start()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameController");
+       // gameManager = GameObject.FindGameObjectWithTag("GameController");
     }
 
     private void OnDestroy()
     {
-        gameManager.GetComponent<GameManager>().GameStart();
+        GameManager.Instance.GameStart();
+       // gameManager.GetComponent<GameManager>().GameStart();
     }
 
     // Update is called once per frame
     void Update()
     {
         gameObject.transform.position += new Vector3(1,0,0) * Time.deltaTime * speed;
-        if(gameObject.transform.position.x >= 1300)
+        if(gameObject.transform.position.x >= 1200)
         {
             Destroy(gameObject);
         }

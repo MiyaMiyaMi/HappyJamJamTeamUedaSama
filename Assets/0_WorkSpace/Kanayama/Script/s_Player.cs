@@ -12,6 +12,7 @@ public class s_Player : MonoBehaviour
     Animator AnimP;
     GameObject heart;
     [SerializeField] Text zyoutai;
+    [SerializeField] Text txtScore;
     private int score;
 
     enum Check
@@ -30,7 +31,7 @@ public class s_Player : MonoBehaviour
 
         oldHp = HP;
         score = 0;
-
+        txtScore.text = "SCORE : " + score.ToString("D5");
 
     }
 
@@ -84,6 +85,7 @@ public class s_Player : MonoBehaviour
                 if (check == Check.Success)
                 {
                     score++;
+                    txtScore.text = "SCORE : " + score.ToString("D5");
                 }
                 //å®ÇΩÇΩÇ´(åÎêR)
                 else if (check == Check.Out)
@@ -115,6 +117,7 @@ public class s_Player : MonoBehaviour
                     AnimP.SetTrigger("tap.trg");
                     AnimP.SetTrigger("success.trg");
                     score++;
+                    txtScore.text = "SCORE : " + score.ToString("D5");
 
                 }
                 //å©ì¶Çµ
@@ -157,6 +160,7 @@ public class s_Player : MonoBehaviour
         if (HP <= 0)
         {
             Debug.Log("GAMEOVER");
+            DataManager.Instance.scoreD = score;
             SceneManager.LoadScene("Result");
         }
     }

@@ -18,7 +18,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     [SerializeField] GameObject Player;
 
-    public float GameSpeed = 0f;
+    public float GameSpeed = 1f;
 
     [SerializeField]
     private float ACTime;
@@ -32,8 +32,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [SerializeField,Header("ƒ‰ƒ“ƒ_ƒ€‚ğ“ü‚ê‚é‚½‚ß‚Ì•Ï”")]
     private int Number;
 
+ 
+
     private void Start()
     {
+       
         SpawnValue = SpawnTime;
         status = Status.Tutorial;
         Player.SetActive(false);
@@ -70,7 +73,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                 {
                     ACTime = 5.0f;
 
-                    GameSpeed += 3.0f;
+                    GameSpeed += 0.1f;
                 }
 
                 break;
