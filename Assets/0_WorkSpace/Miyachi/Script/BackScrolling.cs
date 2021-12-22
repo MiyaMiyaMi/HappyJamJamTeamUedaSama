@@ -13,11 +13,12 @@ public class BackScrolling : MonoBehaviour
     
     private void FixedUpdate()
     {
-        transform.Translate(scrollSpeed * Time.deltaTime * IsStop , 0, 0); //xÀ•W‚ğscrollSpeed•ª“®‚©‚·
+        transform.Translate(scrollSpeed * Time.deltaTime * IsStop * GameManager.Instance.GameSpeed , 0, 0); //xÀ•W‚ğscrollSpeed•ª“®‚©‚·
 
         if (transform.position.x < deadLine) //‚à‚µ”wŒi‚ÌxÀ•W‚æ‚èdeadLine‚ª‘å‚«‚­‚È‚Á‚½‚ç
         {
-            transform.position = new Vector3(startLine, 0, 0);//”wŒi‚ğstartLine‚Ü‚Å–ß‚·
+            float xs = transform.position.x - deadLine;
+            transform.position = new Vector3(startLine + xs, 0, 0);//”wŒi‚ğstartLine‚Ü‚Å–ß‚·
         }
 
     }
