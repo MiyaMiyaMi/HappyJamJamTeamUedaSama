@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     public float GameSpeed = 0f;
 
+    [SerializeField]
     private float ACTime;
 
     [SerializeField, Header("oŒ»‚·‚éŠÔŠu‚ğ§Œä")]
