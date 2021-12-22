@@ -10,9 +10,13 @@ public class GameManager : MonoBehaviour
         Tutorial,
         Play
     }
-    Status status = Status.Tutorial;
+    Status status;
 
     public GameObject[] CapsulePrefabs;
+    [SerializeField, Header("チュートリアル用オブジェクト")] 
+    GameObject TutorialGO;
+
+    [SerializeField] GameObject Player;
 
     public float GameSpeed = 0f;
 
@@ -30,9 +34,19 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SpawnValue = SpawnTime;
+        status = Status.Tutorial;
+        Player.SetActive(false);
+        TutorialGO.SetActive(true);
         status = Status.Play;
     }
 
+    public void GameStart()
+    {
+        TutorialGO.SetActive(false);
+        Player.SetActive(true);
+        status = Status.Play;
+
+    }
 
     // Update is called once per frame
     void Update()
