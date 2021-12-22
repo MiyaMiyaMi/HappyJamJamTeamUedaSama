@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
         status = Status.Tutorial;
         Player.SetActive(false);
         TutorialGO.SetActive(true);
-        status = Status.Play;
     }
 
     public void GameStart()
