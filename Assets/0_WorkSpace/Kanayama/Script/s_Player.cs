@@ -45,7 +45,6 @@ public class s_Player : MonoBehaviour
                 {
                     check = Check.Out;
                     Debug.Log("é∏îs");
-                    HP--;
                 }
                 
             }
@@ -61,7 +60,6 @@ public class s_Player : MonoBehaviour
                 {
                     check = Check.Out;
                     Debug.Log("é∏îs");
-                    HP--;
                 }
             }
             
@@ -71,24 +69,8 @@ public class s_Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (Input.GetMouseButton(0))
-        {
-            //å®ÇΩÇΩÇ´
-            AnimP.SetTrigger("tap.trg");
-            //ÉJÉìÉjÉìÉOëjé~
-            if (check == Check.Success)
-            {
-                AnimP.SetTrigger("success.trg");
-                Debug.Log("ê¨å˜");
-            }
-            //åÎêR
-            else if (check == Check.Out)
-            {
-                AnimP.SetTrigger("bad.trg");
-                SoundManager.Instance.PlaySE("bad");
-                Debug.Log("é∏îs");
-            }
-        }
+           
+        
         
 
         if (collision.gameObject.tag == "out" || collision.gameObject.tag == "safe")
@@ -97,25 +79,39 @@ public class s_Player : MonoBehaviour
             if (check != Check.Null)
             {
                 check = Check.Null;
+                //å®ÇΩÇΩÇ´
+                AnimP.SetTrigger("tap.trg");
+                //ÉJÉìÉjÉìÉOëjé~
+                if (check == Check.Success)
+                {
+                    AnimP.SetTrigger("success.trg");
+                  //  Debug.Log("ê¨å˜");
+                }
+                //åÎêR
+                else if (check == Check.Out)
+                {
+                    AnimP.SetTrigger("bad.trg");
+                    SoundManager.Instance.PlaySE("bad");
+                  //  Debug.Log("é∏îs");
+                    HP--;
+                }
             }
             else
             {
+                //å©ì¶Çµ
+                if (Input.GetMouseButton(1))
+                {
+                    AnimP.SetTrigger("miss.trg");
+                    Debug.Log("å©ì¶Çµ");
+                }
+
+                
                 HP--;
             }
         }
 
 
-        if (check == Check.Null)
-        {
-
-            //å©ì¶Çµ
-            if (Input.GetMouseButton(1))
-            {
-                AnimP.SetTrigger("miss.trg");
-                Debug.Log("å©ì¶Çµ");
-            }
-
-        }
+      
 
     }
 
