@@ -22,7 +22,7 @@ public class s_Player : MonoBehaviour
     void Start()
     {
         AnimP = gameObject.GetComponent<Animator>();
-
+        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -101,6 +101,7 @@ public class s_Player : MonoBehaviour
                 else if(check == Check.Out)
                 {
                     AnimP.SetTrigger("bad.trg");
+                    SoundManager.Instance.PlaySE("bad");
                     Debug.Log("Ž¸”s");
                 }
             }
