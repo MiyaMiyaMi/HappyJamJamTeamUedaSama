@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class s_Player : MonoBehaviour
 {
     [SerializeField] int HP = 1;
+    private int oldHp;
 
     Animator AnimP;
     GameObject heart;
@@ -24,8 +25,8 @@ public class s_Player : MonoBehaviour
     void Start()
     {
         AnimP = gameObject.GetComponent<Animator>();
-        
-        
+
+        oldHp = HP;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -69,9 +70,9 @@ public class s_Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-           
-        
-        
+
+
+
 
         if (collision.gameObject.tag == "out" || collision.gameObject.tag == "safe")
         {
@@ -85,14 +86,14 @@ public class s_Player : MonoBehaviour
                 if (check == Check.Success)
                 {
                     AnimP.SetTrigger("success.trg");
-                  //  Debug.Log("ê¨å˜");
+                    //  Debug.Log("ê¨å˜");
                 }
                 //åÎêR
                 else if (check == Check.Out)
                 {
                     AnimP.SetTrigger("bad.trg");
                     SoundManager.Instance.PlaySE("bad");
-                  //  Debug.Log("é∏îs");
+                    //  Debug.Log("é∏îs");
                     HP--;
                 }
             }
@@ -105,13 +106,21 @@ public class s_Player : MonoBehaviour
                     Debug.Log("å©ì¶Çµ");
                 }
 
-                
+
                 HP--;
             }
         }
+        if (oldHp != HP)
+        {
+            if (SceneManager.GetActiveScene().name == "Main")
+            {
+                HeartManager.Instance.HpDown();
+
+            }
+            oldHp = HP;
+        }
 
 
-      
 
     }
 
