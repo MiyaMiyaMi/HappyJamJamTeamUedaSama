@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class s_Player : MonoBehaviour
@@ -10,6 +11,7 @@ public class s_Player : MonoBehaviour
 
     Animator AnimP;
     GameObject heart;
+    [SerializeField] Text zyoutai;
 
 
     enum Check
@@ -27,6 +29,7 @@ public class s_Player : MonoBehaviour
         AnimP = gameObject.GetComponent<Animator>();
 
         oldHp = HP;
+      
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -79,7 +82,7 @@ public class s_Player : MonoBehaviour
 
             if (check != Check.Null)
             {
-                check = Check.Null;
+         
                 //Œ¨‚½‚½‚«
                 AnimP.SetTrigger("tap.trg");
                 //ƒJƒ“ƒjƒ“ƒO‘jŽ~
@@ -96,6 +99,7 @@ public class s_Player : MonoBehaviour
                     //  Debug.Log("Ž¸”s");
                     HP--;
                 }
+                check = Check.Null;
             }
             else
             {
@@ -127,7 +131,7 @@ public class s_Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        zyoutai.text = check.ToString();
 
 
         if (HP <= 0)
