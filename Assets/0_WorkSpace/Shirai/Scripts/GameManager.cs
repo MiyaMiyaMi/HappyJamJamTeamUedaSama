@@ -10,11 +10,17 @@ public class GameManager : MonoBehaviour
         Tutorial,
         Play
     }
-    Status status = Status.Tutorial;
+    Status status;
 
     public GameObject[] CapsulePrefabs;
+    [SerializeField, Header("チュートリアル用オブジェクト")] 
+    GameObject TutorialGO;
 
-    public float GameSpeed = 0;
+    [SerializeField] GameObject Player;
+
+    public float GameSpeed = 0f;
+
+    private float ACTime;
 
     [SerializeField, Header("出現する間隔を制御")]
     private float SpawnTime;
@@ -28,9 +34,19 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SpawnValue = SpawnTime;
+        status = Status.Tutorial;
+        Player.SetActive(false);
+        TutorialGO.SetActive(true);
         status = Status.Play;
     }
 
+    public void GameStart()
+    {
+        TutorialGO.SetActive(false);
+        Player.SetActive(true);
+        status = Status.Play;
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -47,8 +63,9 @@ public class GameManager : MonoBehaviour
 
                 Number = Random.Range(0, CapsulePrefabs.Length); // Random.Range(最小値、最大値)整数の場合の最大値は除外
                 Instantiate(CapsulePrefabs[Number], new Vector3(10, 0, 0), Quaternion.identity);    // X座標10からランダム生成
-//                    Debug.Log("aaa");
             }
+
+                
                 break;
         }
     }

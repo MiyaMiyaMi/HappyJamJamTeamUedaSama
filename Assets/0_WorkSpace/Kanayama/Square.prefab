@@ -8,20 +8,32 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
+  - component: {fileID: 5957153640345322230}
+  - component: {fileID: 5957153640345322231}
+  - component: {fileID: 7090575936112755003}
+  - component: {fileID: 4828229082470336386}
+=======
   - component: {fileID: 5914103073213502577}
   - component: {fileID: 1655882278242130087}
   - component: {fileID: 7119663884030913760}
   - component: {fileID: 8569612946623723080}
   - component: {fileID: 2972722236189815547}
   - component: {fileID: 7717899746982826129}
+>>>>>>> 26bfc1f9a5b995080ca1bef0d9e9119d40458dcc
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+<<<<<<< HEAD
+  m_IsActive: 0
+--- !u!4 &5957153640345322230
+=======
   m_IsActive: 1
 --- !u!4 &5914103073213502577
+>>>>>>> 26bfc1f9a5b995080ca1bef0d9e9119d40458dcc
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,6 +98,9 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+<<<<<<< HEAD
+--- !u!61 &7090575936112755003
+=======
 --- !u!114 &7119663884030913760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 3
 --- !u!61 &8569612946623723080
+>>>>>>> 26bfc1f9a5b995080ca1bef0d9e9119d40458dcc
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
