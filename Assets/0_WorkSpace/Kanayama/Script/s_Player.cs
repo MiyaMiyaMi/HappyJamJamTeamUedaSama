@@ -10,6 +10,7 @@ public class s_Player : MonoBehaviour
     Animator AnimP;
     GameObject heart;
 
+
     enum Check
     {
         Null,
@@ -23,6 +24,7 @@ public class s_Player : MonoBehaviour
     void Start()
     {
         AnimP = gameObject.GetComponent<Animator>();
+        
         
     }
 
@@ -69,6 +71,26 @@ public class s_Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (Input.GetMouseButton(0))
+        {
+            //å®ÇΩÇΩÇ´
+            AnimP.SetTrigger("tap.trg");
+            //ÉJÉìÉjÉìÉOëjé~
+            if (check == Check.Success)
+            {
+                AnimP.SetTrigger("success.trg");
+                Debug.Log("ê¨å˜");
+            }
+            //åÎêR
+            else if (check == Check.Out)
+            {
+                AnimP.SetTrigger("bad.trg");
+                SoundManager.Instance.PlaySE("bad");
+                Debug.Log("é∏îs");
+            }
+        }
+        
+
         if (collision.gameObject.tag == "out" || collision.gameObject.tag == "safe")
         {
 
@@ -81,39 +103,26 @@ public class s_Player : MonoBehaviour
                 HP--;
             }
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(check == Check.Null)
+
+        if (check == Check.Null)
         {
-            if (Input.GetMouseButton(0))
-            {
-                //å®ÇΩÇΩÇ´
-                AnimP.SetTrigger("tap.trg");
-                //ÉJÉìÉjÉìÉOëjé~
-                if (check == Check.Success)
-                {
-                    AnimP.SetTrigger("success.trg");
-                    Debug.Log("ê¨å˜");
-                }
-                //åÎêR
-                else if(check == Check.Out)
-                {
-                    AnimP.SetTrigger("bad.trg");
-                    SoundManager.Instance.PlaySE("bad");
-                    Debug.Log("é∏îs");
-                }
-            }
+
             //å©ì¶Çµ
-            else if(Input.GetMouseButton(1))
+            if (Input.GetMouseButton(1))
             {
                 AnimP.SetTrigger("miss.trg");
                 Debug.Log("å©ì¶Çµ");
             }
 
         }
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
 
 
         if (HP <= 0)
@@ -124,3 +133,5 @@ public class s_Player : MonoBehaviour
     }
 
 }
+
+
