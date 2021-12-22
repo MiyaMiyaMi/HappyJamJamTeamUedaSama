@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 public class s_Player : MonoBehaviour
 {
     [SerializeField] int HP = 1;
+    private int oldHp;
 
     Animator AnimP;
+    GameObject heart;
+
 
     enum Check
     {
@@ -22,7 +25,8 @@ public class s_Player : MonoBehaviour
     void Start()
     {
         AnimP = gameObject.GetComponent<Animator>();
-        
+
+        oldHp = HP;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -42,7 +46,6 @@ public class s_Player : MonoBehaviour
                 {
                     check = Check.Out;
                     Debug.Log("é∏îs");
-                    HP--;
                 }
                 
             }
@@ -58,7 +61,6 @@ public class s_Player : MonoBehaviour
                 {
                     check = Check.Out;
                     Debug.Log("é∏îs");
-                    HP--;
                 }
             }
             
@@ -68,52 +70,64 @@ public class s_Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+
+
+
+
         if (collision.gameObject.tag == "out" || collision.gameObject.tag == "safe")
         {
 
             if (check != Check.Null)
             {
                 check = Check.Null;
-            }
-            else
-            {
-                HP--;
-            }
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(check == Check.Null)
-        {
-            if (Input.GetMouseButton(0))
-            {
                 //å®ÇΩÇΩÇ´
                 AnimP.SetTrigger("tap.trg");
                 //ÉJÉìÉjÉìÉOëjé~
                 if (check == Check.Success)
                 {
                     AnimP.SetTrigger("success.trg");
-                    Debug.Log("ê¨å˜");
+                    //  Debug.Log("ê¨å˜");
                 }
                 //åÎêR
-                else if(check == Check.Out)
+                else if (check == Check.Out)
                 {
                     AnimP.SetTrigger("bad.trg");
                     SoundManager.Instance.PlaySE("bad");
-                    Debug.Log("é∏îs");
+                    //  Debug.Log("é∏îs");
+                    HP--;
                 }
             }
-            //å©ì¶Çµ
-            else if(Input.GetMouseButton(1))
+            else
             {
-                AnimP.SetTrigger("miss.trg");
-                Debug.Log("å©ì¶Çµ");
-            }
+                //å©ì¶Çµ
+                if (Input.GetMouseButton(1))
+                {
+                    AnimP.SetTrigger("miss.trg");
+                    Debug.Log("å©ì¶Çµ");
+                }
 
+
+                HP--;
+            }
+        }
+        if (oldHp != HP)
+        {
+            if (SceneManager.GetActiveScene().name == "Main")
+            {
+                HeartManager.Instance.HpDown();
+
+            }
+            oldHp = HP;
         }
 
+
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
 
 
         if (HP <= 0)
@@ -124,3 +138,5 @@ public class s_Player : MonoBehaviour
     }
 
 }
+
+

@@ -937,6 +937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13be08c3906814b59acb67e0694315bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsScoreGet: 0
   captionLabel: {fileID: 26964922}
   scoreLabel: {fileID: 1100305042}
   highScoreLabel: {fileID: 1362824642}
@@ -1412,7 +1413,7 @@ Camera:
   m_GameObject: {fileID: 1122088955}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2

@@ -32,9 +32,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SpawnValue = SpawnTime;
+<<<<<<< HEAD
         status = Status.Tutorial;
         Player.SetActive(false);
         TutorialGO.SetActive(true);
+=======
+        status = Status.Play;
+>>>>>>> 26bfc1f9a5b995080ca1bef0d9e9119d40458dcc
     }
 
     public void GameStart()
@@ -60,6 +64,7 @@ public class GameManager : MonoBehaviour
 
                 Number = Random.Range(0, CapsulePrefabs.Length); // Random.Range(最小値、最大値)整数の場合の最大値は除外
                 Instantiate(CapsulePrefabs[Number], new Vector3(10, 0, 0), Quaternion.identity);    // X座標10からランダム生成
+//                    Debug.Log("aaa");
             }
                 break;
         }
