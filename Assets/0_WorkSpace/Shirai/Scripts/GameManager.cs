@@ -64,8 +64,15 @@ public class GameManager : MonoBehaviour
                 Number = Random.Range(0, CapsulePrefabs.Length); // Random.Range(最小値、最大値)整数の場合の最大値は除外
                 Instantiate(CapsulePrefabs[Number], new Vector3(10, 0, 0), Quaternion.identity);    // X座標10からランダム生成
             }
-
                 
+                ACTime += Time.deltaTime;
+                if (ACTime <= 0.0f)
+                {
+                    ACTime = 10.0f;
+
+                    GameSpeed += 3.0f;
+                }
+
                 break;
         }
     }
