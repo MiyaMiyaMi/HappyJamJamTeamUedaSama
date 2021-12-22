@@ -19,7 +19,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [SerializeField] GameObject Player;
     [SerializeField, Header("max")]
     public float maxGameSpeed;
-    public float GameSpeed = 1f;
+    public float GameSpeed = 1.0f;
 
     [SerializeField,Header("何秒ごとにゲームスピードが上がるか")]
     private float ACTime;
