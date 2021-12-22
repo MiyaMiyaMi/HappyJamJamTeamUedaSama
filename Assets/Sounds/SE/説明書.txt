@@ -1,0 +1,7 @@
+・CheckSE＝振り向くアクションSE
+・CheckSE２＝振り向くアクションSEの候補２
+・SE_Pluse＝カウントをプラスするSE
+・SE_Pluse2＝カウントをプラスするSEの候補
+・SE_Minsu＝失敗時のSE
+・SE_Cursor＝タイトルのカーソル上下時のSE」
+・SE_Cursor２＝タイトルのカーソル上下時のSE候補
