@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] CapsulePrefabs;
 
-    public float GameSpeed = 0;
+    public float GameSpeed = 0f;
+
+    private float ACTime;
 
     [SerializeField, Header("出現する間隔を制御")]
     private float SpawnTime;
@@ -47,8 +49,9 @@ public class GameManager : MonoBehaviour
 
                 Number = Random.Range(0, CapsulePrefabs.Length); // Random.Range(最小値、最大値)整数の場合の最大値は除外
                 Instantiate(CapsulePrefabs[Number], new Vector3(10, 0, 0), Quaternion.identity);    // X座標10からランダム生成
-                    Debug.Log("aaa");
             }
+
+                
                 break;
         }
     }
