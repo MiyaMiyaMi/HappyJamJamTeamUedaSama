@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class StartAction : MonoBehaviour
 {
-    [SerializeField] GameObject gameManager;
+    GameObject gameManager;
     [SerializeField,Header("スライド速度")] float speed;
 
+    private void Start()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameController");
+    }
 
     private void OnDestroy()
     {
