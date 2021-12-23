@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6031684154986087610}
   - component: {fileID: 1116462580324214367}
   - component: {fileID: 5498155816428857654}
+  - component: {fileID: -4158172385550975260}
   m_Layer: 0
   m_Name: TutorialSafe
   m_TagString: safe
@@ -123,3 +124,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.55, y: 6}
   m_EdgeRadius: 0
+--- !u!95 &-4158172385550975260
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5970227675495453129}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c8e7d1a08b4f5a243b7e82d01366c7f1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
