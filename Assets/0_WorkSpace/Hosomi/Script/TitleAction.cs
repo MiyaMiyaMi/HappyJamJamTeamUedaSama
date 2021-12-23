@@ -23,13 +23,11 @@ public class TitleAction : MonoBehaviour
     [SerializeField, Header("クレジットの最大ページ数")] int CMaxPage;
     [SerializeField,Header("表示する画像")]Sprite[] sprites;
     int PageCnt;        //ページカウント用
-    AudioSource myAudio;
-    [SerializeField, Header("0:SE_Plus")] AudioClip[] audioClips;
 
     // Start is called before the first frame update
     void Start()
     {
-        myAudio = GetComponent<AudioSource>();
+       // myAudio = GetComponent<AudioSource>();
         Ready();
     }
 
@@ -45,7 +43,7 @@ public class TitleAction : MonoBehaviour
     {
         if (situation == Situation.Title)
         {
-            myAudio.PlayOneShot(audioClips[0]);
+            SoundManager.Instance.PlaySE("Kettei2");
 
             SceneManager.LoadScene("Main");
         }
@@ -56,7 +54,7 @@ public class TitleAction : MonoBehaviour
         if (situation == Situation.Title)
         {
             situation = Situation.HowToPlay;
-            myAudio.PlayOneShot(audioClips[0]);
+            SoundManager.Instance.PlaySE("Kettei2");
             PageCnt = 0;
             Display.GetComponent<Image>().sprite = sprites[PageCnt];
             Display.SetActive(true);
@@ -70,8 +68,8 @@ public class TitleAction : MonoBehaviour
 
         if (situation == Situation.Title)
         {
-            myAudio.PlayOneShot(audioClips[0]);
             situation = Situation.Ranking;
+            SoundManager.Instance.PlaySE("Kettei2");
             naichilab.RankingLoader.Instance.SendScoreAndShowRanking(0, 0, "RankingGetOnly");
         }
     }
@@ -81,7 +79,7 @@ public class TitleAction : MonoBehaviour
         if (situation == Situation.Title)
         {
             situation = Situation.Credit;
-            myAudio.PlayOneShot(audioClips[0]);
+            SoundManager.Instance.PlaySE("Kettei2");
             PageCnt += RMaxPage;
             Display.GetComponent<Image>().sprite = sprites[PageCnt];
             Display.SetActive(true);
@@ -96,7 +94,7 @@ public class TitleAction : MonoBehaviour
         if(situation != Situation.Title)
         {
             situation = Situation.Title;
-            myAudio.PlayOneShot(audioClips[0]);
+            SoundManager.Instance.PlaySE("Kettei2");
             Display.SetActive(false);
             Cancel.SetActive(false);
             PageCnt = 0;
