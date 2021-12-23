@@ -69,7 +69,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                     SpawnValue = SpawnTime;           // 1秒にする
 
                     Number = Random.Range(0, CapsulePrefabs.Length); // Random.Range(最小値、最大値)整数の場合の最大値は除外
-                    Instantiate(CapsulePrefabs[Number], new Vector3(10, 0, 0), Quaternion.identity);    // X座標10からランダム生成
+                    Instantiate(CapsulePrefabs[Number], new Vector3(12, 0, 0), Quaternion.identity);    // X座標10からランダム生成
                 }
                 if (GameSpeed < maxGameSpeed)
                 {
