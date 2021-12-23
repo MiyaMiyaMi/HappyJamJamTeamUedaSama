@@ -6,13 +6,25 @@ public class ObjectSpawn : MonoBehaviour
 {
     [Header("Objectのスピード")]
     public float Speed = 5;        // 生徒の動きの速さ
-
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-
+        anim = GetComponent<Animator>();
+        if (gameObject.tag == "out")
+        {
+            anim.SetTrigger("out");
+        }
+        else
+        {
+            anim.SetTrigger("safe");
+        }
         
 
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+      
     }
 
     // Update is called once per frame

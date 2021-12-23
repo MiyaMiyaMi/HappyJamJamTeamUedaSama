@@ -50,10 +50,7 @@ public class SweatAction : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            Sweat();
-        }
+    
         if (IsSweat)
         {
             if (!IsSet)

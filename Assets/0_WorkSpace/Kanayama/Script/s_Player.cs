@@ -15,6 +15,7 @@ public class s_Player : MonoBehaviour
     [SerializeField] Text txtScore;
     [SerializeField] private Image image;
     [SerializeField] private Sprite sprite;
+    [SerializeField] GameObject sweat;
 
     private int score;
 
@@ -55,9 +56,7 @@ public class s_Player : MonoBehaviour
                 {
                     check = Check.Out;
                     Debug.Log("é∏îs");
-                    sprite = Resources.Load<Sprite>("Image_Student_Arrested"); // ç∑ï™âÊëú
-                    image = GetComponent<Image>();
-                    image.sprite = sprite;
+                  
                 }
 
             }
@@ -68,9 +67,9 @@ public class s_Player : MonoBehaviour
                 {
                     check = Check.Success;
                     Debug.Log("ê¨å˜");
-                    sprite = Resources.Load<Sprite>("Image_Student_Arrested"); // ç∑ï™âÊëú
-                    image = GetComponent<Image>();
-                    image.sprite = sprite;
+                    //sprite = Resources.Load<Sprite>("Image_Student_Arrested"); // ç∑ï™âÊëú
+                    //image = GetComponent<Image>();
+                    //image.sprite = sprite;
                 }
                 else if (Input.GetMouseButton(1))
                 {
@@ -100,6 +99,7 @@ public class s_Player : MonoBehaviour
                 //å®ÇΩÇΩÇ´(åÎêR)
                 else if (check == Check.Out)
                 {
+                    sweat.GetComponent<SweatAction>().Sweat();
                     //å®ÇΩÇΩÇ´
                     Debug.Log("å®ÇΩÇΩÇ´åÎêR");
                     SoundManager.Instance.PlaySE("SE_Check");
@@ -107,12 +107,17 @@ public class s_Player : MonoBehaviour
                     SoundManager.Instance.PlaySE("SE_Minus");
                     AnimP.SetTrigger("bad.trg");
                     HP--;
+                    Animator sanim = collision.gameObject.GetComponent<Animator>();
+                    sanim.SetTrigger("furimuki");
 
                 }
             }
             else//å©ì¶Çµ
             {
+                sweat.GetComponent<SweatAction>().Sweat();
                 //å®ÇΩÇΩÇ´
+                Animator sanim = collision.gameObject.GetComponent<Animator>();
+                sanim.SetTrigger("furimuki");
                 SoundManager.Instance.PlaySE("SE_Check");
                 AnimP.SetTrigger("tap.trg");
                 SoundManager.Instance.PlaySE("SE_Minus");
@@ -134,13 +139,17 @@ public class s_Player : MonoBehaviour
                     AnimP.SetTrigger("tap.trg");
                     SoundManager.Instance.PlaySE("SE_Plus2");
                     AnimP.SetTrigger("success.trg");
+
                     score++;
                     txtScore.text = "SCORE : " + score.ToString("D5");
+                    Animator sanim = collision.gameObject.GetComponent<Animator>();
+                    sanim.SetTrigger("furimuki");
 
                 }
                 //å©ì¶Çµ
                 else if (check == Check.Out)
                 {
+                    sweat.GetComponent<SweatAction>().Sweat();
                     SoundManager.Instance.PlaySE("SE_Minus");
                     AnimP.SetTrigger("miss.trg");
                     HP--;
@@ -149,6 +158,7 @@ public class s_Player : MonoBehaviour
             }
             else
             {
+                sweat.GetComponent<SweatAction>().Sweat();
                 SoundManager.Instance.PlaySE("SE_Minus");
                 AnimP.SetTrigger("miss.trg");
                 Debug.Log("å©ì¶Çµ");
