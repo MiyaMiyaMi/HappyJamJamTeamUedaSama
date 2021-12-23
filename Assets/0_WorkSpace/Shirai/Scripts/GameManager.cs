@@ -33,10 +33,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [SerializeField, Header("ƒ‰ƒ“ƒ_ƒ€‚ğ“ü‚ê‚é‚½‚ß‚Ì•Ï”")]
     private int Number;
 
-
+    private float  animSpeed;
 
     private void Start()
     {
+        animSpeed = Player.GetComponent<Animator>().speed;
         acTimeValue = ACTime;
         SpawnValue = SpawnTime;
         status = Status.Tutorial;
@@ -77,6 +78,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
                         acTimeValue = ACTime;
 
                         GameSpeed += 0.1f;
+                        Player.GetComponent<Animator>().speed = animSpeed * GameSpeed;
                     }
 
                 }

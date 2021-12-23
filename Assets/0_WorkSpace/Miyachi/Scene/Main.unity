@@ -264,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 1394a6fe4351cee4c9c971fabd16433b, type: 3}
     - target: {fileID: 8984296122329242036, guid: 870a7248c97262e4da797ba994bc794b, type: 3}
       propertyPath: spSpeed
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8984296122329242036, guid: 870a7248c97262e4da797ba994bc794b, type: 3}
       propertyPath: spSPos.x
