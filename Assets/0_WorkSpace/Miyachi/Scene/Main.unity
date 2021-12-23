@@ -1653,7 +1653,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 1394a6fe4351cee4c9c971fabd16433b, type: 3}
     - target: {fileID: 8762652614842483711, guid: f6542c8f5682b194e9e8a627ad7587f2, type: 3}
       propertyPath: HP
-      value: 1000
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8762652614842483711, guid: f6542c8f5682b194e9e8a627ad7587f2, type: 3}
       propertyPath: sweat
