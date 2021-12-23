@@ -83,6 +83,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
         Debug.Log("out");
         if(collision.gameObject.tag == "out")
         {
+            outG.tag = "Untagged";
             myAnim.SetTrigger("tap.trg");
             myAnim.SetTrigger("success.trg");
             outG.GetComponent<Animator>().SetTrigger("furimuki");
@@ -117,7 +118,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
                         tutorialMouse[1].SetActive(false);
                         myAnim.speed = 1;
                         stop = 1; 
-                        outG.tag = "Untagged";
+                       
                         StartCnt++;
                  
                         foreach (var b in GameObject.FindGameObjectsWithTag("back"))
