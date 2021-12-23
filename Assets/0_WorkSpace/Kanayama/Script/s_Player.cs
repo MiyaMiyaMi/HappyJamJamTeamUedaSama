@@ -94,6 +94,7 @@ public class s_Player : MonoBehaviour
                 if (check == Check.Success)
                 {
                     score++;
+                    SoundManager.Instance.PlaySE("SE_Plus2");
                     txtScore.text = "SCORE : " + score.ToString("D5");
                 }
                 //å®ÇΩÇΩÇ´(åÎêR)

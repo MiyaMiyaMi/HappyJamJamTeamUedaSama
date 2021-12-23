@@ -83,10 +83,17 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
         Debug.Log("out");
         if(collision.gameObject.tag == "out")
         {
+            SoundManager.Instance.PlaySE("SE_Check");
+            SoundManager.Instance.PlaySE("SE_Plus2");
             outG.tag = "Untagged";
            // myAnim.SetTrigger("tap.trg");
             myAnim.SetTrigger("success.trg");
             outG.GetComponent<Animator>().SetTrigger("furimuki");
+        }
+        if(collision.gameObject.tag == "safe")
+        {
+            SoundManager.Instance.PlaySE("SE_Plus2");
+            safeG.tag = "Untagged";
         }
     }
     // Update is called once per frame
@@ -138,7 +145,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
                         objectSpawn.GetComponent<ObjectSpawn>().Speed = speed;
                         outS.GetComponent<ObjectSpawn>().Speed = speed;
                         myAnim.speed = 1;
-                        safeG.tag = "Untagged";
+                        
                         StartCnt++;
                         foreach (var b in GameObject.FindGameObjectsWithTag("back"))
                         {
