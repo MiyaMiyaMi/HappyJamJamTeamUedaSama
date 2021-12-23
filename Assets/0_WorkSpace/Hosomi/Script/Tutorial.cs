@@ -20,11 +20,14 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
     [SerializeField, Header("0:TutorialOut 1:TutorialSafe 2:StratSlide")] GameObject[] tutorialObjects;
     GameObject objectSpawn;         //接触したオブジェクトの保存  
     GameObject outS;
+    Animator myAnim;
+
     // Start is called before the first frame update
     void Start()
     {
 
         tutorial = TutorialCheck.Null;
+        myAnim = GetComponent<Animator>();
         StartCnt = 0;
         StartFrg = false;
 
@@ -45,6 +48,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
             tutorialMouse[0].SetActive(true);
             tutorialMouse[1].SetActive(true);
             tutorial = TutorialCheck.Cunning;
+            myAnim.speed = 0;
             foreach (var b in GameObject.FindGameObjectsWithTag("back"))
             {
                 b.GetComponent<BackScrolling>().IsStop = 0;
@@ -58,6 +62,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
             tutorialMouse[0].SetActive(true);
             tutorialMouse[2].SetActive(true);
             tutorial = TutorialCheck.Through;
+            myAnim.speed = 0;
             foreach (var b in GameObject.FindGameObjectsWithTag("back"))
             {
                 b.GetComponent<BackScrolling>().IsStop = 0;
@@ -82,6 +87,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
                         objectSpawn.GetComponent<ObjectSpawn>().Speed = speed;
                         tutorialMouse[0].SetActive(false);
                         tutorialMouse[1].SetActive(false);
+                        myAnim.speed = 1;
                         Instantiate(tutorialObjects[1], tutorialObjects[1].transform.position, Quaternion.identity);
                         StartCnt++;
                         foreach (var b in GameObject.FindGameObjectsWithTag("back"))
@@ -100,6 +106,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
                         tutorialMouse[2].SetActive(false);
                         objectSpawn.GetComponent<ObjectSpawn>().Speed = speed;
                         outS.GetComponent<ObjectSpawn>().Speed = speed;
+                        myAnim.speed = 1;
                         StartCnt++;
                         foreach (var b in GameObject.FindGameObjectsWithTag("back"))
                         {
