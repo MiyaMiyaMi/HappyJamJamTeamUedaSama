@@ -1,30 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartAction : MonoBehaviour
 {
-   // GameObject gameManager;
     [SerializeField,Header("スライド速度")] float speed;
-
+    Text myT;
+    public bool IsSet;
     private void Start()
     {
-       // gameManager = GameObject.FindGameObjectWithTag("GameController");
+        myT = GetComponent<Text>();
     }
 
-    private void OnDestroy()
+   
+    public void Set()
     {
-        GameManager.Instance.GameStart();
-       // gameManager.GetComponent<GameManager>().GameStart();
+        IsSet = true;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        gameObject.transform.position += new Vector3(1,0,0) * Time.deltaTime * speed;
-        if(gameObject.transform.position.x >= 1350)
+        if (IsSet)
         {
-            Destroy(gameObject);
+            gameObject.transform.position += new Vector3(1, 0, 0) * Time.deltaTime * speed;
+            if (gameObject.transform.position.x >= 1400)
+            {
+                GameManager.Instance.GameStart();
+                myT.text = null;
+            }
         }
+      
     }
+   
 }
