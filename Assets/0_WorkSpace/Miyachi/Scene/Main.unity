@@ -255,6 +255,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984296122329242033, guid: 870a7248c97262e4da797ba994bc794b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1394a6fe4351cee4c9c971fabd16433b, type: 3}
     - target: {fileID: 8984296122329242037, guid: 870a7248c97262e4da797ba994bc794b, type: 3}
       propertyPath: m_Name
       value: Tutorial
@@ -266,6 +270,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8984296122329242037, guid: 870a7248c97262e4da797ba994bc794b, type: 3}
   m_PrefabInstance: {fileID: 147501369}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &147501371
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147501370}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3ae01eb79c149ea4a99df20da0afd054, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &204539709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1328,6 +1351,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8762652614842483710, guid: f6542c8f5682b194e9e8a627ad7587f2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1394a6fe4351cee4c9c971fabd16433b, type: 3}
     - target: {fileID: 8762652614842483711, guid: f6542c8f5682b194e9e8a627ad7587f2, type: 3}
       propertyPath: zyoutai
       value: 
