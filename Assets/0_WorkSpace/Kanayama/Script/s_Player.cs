@@ -13,6 +13,9 @@ public class s_Player : MonoBehaviour
     GameObject heart;
     [SerializeField] Text zyoutai;
     [SerializeField] Text txtScore;
+    [SerializeField] private Image image;
+    [SerializeField] private Sprite sprite;
+
     private int score;
 
     enum Check
@@ -31,7 +34,7 @@ public class s_Player : MonoBehaviour
 
         oldHp = HP;
         score = 0;
-        //txtScore.text = "SCORE : " + score.ToString("D5");
+        txtScore.text = "SCORE : " + score.ToString("D5");
 
     }
 
@@ -52,6 +55,9 @@ public class s_Player : MonoBehaviour
                 {
                     check = Check.Out;
                     Debug.Log("é∏îs");
+                    sprite = Resources.Load<Sprite>("");
+                    image = GetComponent<Image>();
+                    image.sprite = sprite;
                 }
 
             }
@@ -62,11 +68,15 @@ public class s_Player : MonoBehaviour
                 {
                     check = Check.Success;
                     Debug.Log("ê¨å˜");
+                    sprite = Resources.Load<Sprite>("");
+                    image = GetComponent<Image>();
+                    image.sprite = sprite;
                 }
                 else if (Input.GetMouseButton(1))
                 {
                     check = Check.Out;
                     Debug.Log("é∏îs");
+
                 }
             }
 
@@ -91,12 +101,12 @@ public class s_Player : MonoBehaviour
                 else if (check == Check.Out)
                 {
                     //å®ÇΩÇΩÇ´
+                    Debug.Log("å®ÇΩÇΩÇ´åÎêR");
                     SoundManager.Instance.PlaySE("SE_Check");
                     AnimP.SetTrigger("tap.trg");
                     SoundManager.Instance.PlaySE("SE_Minus");
                     AnimP.SetTrigger("bad.trg");
                     HP--;
-                    Debug.Log("å®ÇΩÇΩÇ´åÎêR");
 
                 }
             }
@@ -163,7 +173,7 @@ public class s_Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //zyoutai.text = check.ToString();
+        zyoutai.text = check.ToString();
 
 
         if (HP <= 0)
