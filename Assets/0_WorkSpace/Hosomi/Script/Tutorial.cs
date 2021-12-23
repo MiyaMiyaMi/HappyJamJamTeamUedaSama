@@ -84,7 +84,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
         if(collision.gameObject.tag == "out")
         {
             outG.tag = "Untagged";
-            myAnim.SetTrigger("tap.trg");
+           // myAnim.SetTrigger("tap.trg");
             myAnim.SetTrigger("success.trg");
             outG.GetComponent<Animator>().SetTrigger("furimuki");
         }

@@ -136,7 +136,7 @@ public class s_Player : MonoBehaviour
                 {
                     //Œ¨‚½‚½‚«
                     SoundManager.Instance.PlaySE("SE_Check");
-                    AnimP.SetTrigger("tap.trg");
+                    //AnimP.SetTrigger("tap.trg");
                     SoundManager.Instance.PlaySE("SE_Plus2");
                     AnimP.SetTrigger("success.trg");
 
