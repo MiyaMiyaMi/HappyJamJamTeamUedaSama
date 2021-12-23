@@ -27,6 +27,7 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
     private bool IsInterval;
     void Start()
     {
+        SoundManager.Instance.PlayBGM("Result");
         SoundManager.Instance.PlaySE("chaim2_");
         students = new List<StrStudent>();
         timeValue = spownTime;
