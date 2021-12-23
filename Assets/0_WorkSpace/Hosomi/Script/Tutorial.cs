@@ -27,9 +27,11 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
     bool IsOutS;
     GameObject outG;
     GameObject safeG;
+    int stop;
     // Start is called before the first frame update
     void Start()
     {
+        stop = 1;
         e = 0.0f;
         tutorial = TutorialCheck.Null;
         myAnim = GetComponent<Animator>();
@@ -54,6 +56,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
             tutorialMouse[1].SetActive(true);
             tutorial = TutorialCheck.Cunning;
             myAnim.speed = 0;
+            stop = 0;
             foreach (var b in GameObject.FindGameObjectsWithTag("back"))
             {
                 b.GetComponent<BackScrolling>().IsStop = 0;
@@ -80,10 +83,11 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
     {
         if (!IsOutS)
         {
-            e += Time.deltaTime;
+            e += Time.deltaTime * stop;
             if (e > spSpeed)
             {
                 safeG = Instantiate(tutorialObjects[1], spSPos, Quaternion.identity);
+               //safeG.GetComponent<ObjectSpawn>().Speed = 0;
                 IsOutS = true;
             }
         }
@@ -102,6 +106,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
                         tutorialMouse[0].SetActive(false);
                         tutorialMouse[1].SetActive(false);
                         myAnim.speed = 1;
+                        stop = 1; 
                         outG.tag = "Untagged";
                         StartCnt++;
                         foreach (var b in GameObject.FindGameObjectsWithTag("back"))
