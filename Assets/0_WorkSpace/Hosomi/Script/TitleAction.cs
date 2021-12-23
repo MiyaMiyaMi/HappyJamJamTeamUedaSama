@@ -27,8 +27,8 @@ public class TitleAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // myAudio = GetComponent<AudioSource>();
         Ready();
+        SoundManager.Instance.PlayBGM("LEMON_TEA");
     }
 
     void Ready()
