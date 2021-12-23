@@ -239,6 +239,9 @@ MonoBehaviour:
   HP: 1
   zyoutai: {fileID: 0}
   txtScore: {fileID: 0}
+  image: {fileID: 0}
+  sprite: {fileID: 0}
+  sweat: {fileID: 0}
 --- !u!1 &643358019
 GameObject:
   m_ObjectHideFlags: 0

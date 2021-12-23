@@ -56,6 +56,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
             tutorialMouse[1].SetActive(true);
             tutorial = TutorialCheck.Cunning;
             myAnim.speed = 0;
+          
             stop = 0;
             foreach (var b in GameObject.FindGameObjectsWithTag("back"))
             {
@@ -77,7 +78,16 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
             }
         }
     }
-
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("out");
+        if(collision.gameObject.tag == "out")
+        {
+            myAnim.SetTrigger("tap.trg");
+            myAnim.SetTrigger("success.trg");
+            outG.GetComponent<Animator>().SetTrigger("furimuki");
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -109,6 +119,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
                         stop = 1; 
                         outG.tag = "Untagged";
                         StartCnt++;
+                 
                         foreach (var b in GameObject.FindGameObjectsWithTag("back"))
                         {
                             b.GetComponent<BackScrolling>().IsStop = 1;
