@@ -262,6 +262,7 @@ namespace naichilab
                 UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Ranking");
                 ResultManager rm = GameObject.Find("ResultManager").GetComponent<ResultManager>();
                 rm.OnCloseButtonClick();
+               
             }
             else
             {
