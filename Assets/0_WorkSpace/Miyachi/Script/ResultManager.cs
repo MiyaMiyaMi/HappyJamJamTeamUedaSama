@@ -27,12 +27,14 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
     private bool IsInterval;
     void Start()
     {
+        SoundManager.Instance.PlaySE("chaim2_");
         students = new List<StrStudent>();
         timeValue = spownTime;
         stCount = 0;
-        score = DataManager.Instance.scoreD;
+        score = 10;// DataManager.Instance.scoreD;
+       
         naichilab.RankingLoader.Instance.SendScoreAndShowRanking(score, 0, "Ranking");
-        FadeManager.Instance.FadeOutOnlySet();
+       
         if (score != 0)
         {
             for (int i = 0; i < maxSetStudent; i++)
@@ -47,7 +49,8 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
     }
     public void OnCloseButtonClick()
     {
-        SceneManager.LoadScene("Title");
+        FadeManager.Instance.FadeSceneChange("Title");
+        //SceneManager.LoadScene("Title");
     }
     bool MoveStudent(StrStudent st)
     {
