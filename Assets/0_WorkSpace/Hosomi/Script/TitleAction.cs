@@ -16,17 +16,20 @@ public class TitleAction : MonoBehaviour
     };
     Situation situation;
 
+    
     [SerializeField] GameObject Display;
     [SerializeField] GameObject Cancel;
     [SerializeField,Header("ルールの最大ページ数")]int RMaxPage;
     [SerializeField, Header("クレジットの最大ページ数")] int CMaxPage;
     [SerializeField,Header("表示する画像")]Sprite[] sprites;
     int PageCnt;        //ページカウント用
-
+    AudioSource myAudio;
+    [SerializeField, Header("0:SE_Plus")] AudioClip[] audioClips;
 
     // Start is called before the first frame update
     void Start()
     {
+        myAudio = GetComponent<AudioSource>();
         Ready();
     }
 
@@ -40,8 +43,12 @@ public class TitleAction : MonoBehaviour
 
     public void PushStart()
     {
-        if(situation == Situation.Title)
-        SceneManager.LoadScene("Main");
+        if (situation == Situation.Title)
+        {
+            myAudio.PlayOneShot(audioClips[0]);
+
+            SceneManager.LoadScene("Main");
+        }
     }
 
     public void PushHowToPlay()
@@ -49,6 +56,7 @@ public class TitleAction : MonoBehaviour
         if (situation == Situation.Title)
         {
             situation = Situation.HowToPlay;
+            myAudio.PlayOneShot(audioClips[0]);
             PageCnt = 0;
             Display.GetComponent<Image>().sprite = sprites[PageCnt];
             Display.SetActive(true);
@@ -61,8 +69,11 @@ public class TitleAction : MonoBehaviour
     {
 
         if (situation == Situation.Title)
+        {
+            myAudio.PlayOneShot(audioClips[0]);
             situation = Situation.Ranking;
-        naichilab.RankingLoader.Instance.SendScoreAndShowRanking(0, 0, "RankingGetOnly");
+            naichilab.RankingLoader.Instance.SendScoreAndShowRanking(0, 0, "RankingGetOnly");
+        }
     }
 
     public void PushCredit()
@@ -70,6 +81,7 @@ public class TitleAction : MonoBehaviour
         if (situation == Situation.Title)
         {
             situation = Situation.Credit;
+            myAudio.PlayOneShot(audioClips[0]);
             PageCnt += RMaxPage;
             Display.GetComponent<Image>().sprite = sprites[PageCnt];
             Display.SetActive(true);
@@ -84,6 +96,7 @@ public class TitleAction : MonoBehaviour
         if(situation != Situation.Title)
         {
             situation = Situation.Title;
+            myAudio.PlayOneShot(audioClips[0]);
             Display.SetActive(false);
             Cancel.SetActive(false);
             PageCnt = 0;
