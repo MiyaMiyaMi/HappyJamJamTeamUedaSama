@@ -16,6 +16,7 @@ public class TitleAction : MonoBehaviour
     };
     Situation situation;
 
+    
     [SerializeField] GameObject Display;
     [SerializeField] GameObject Cancel;
     [SerializeField,Header("ルールの最大ページ数")]int RMaxPage;
