@@ -31,7 +31,7 @@ public class s_Player : MonoBehaviour
 
         oldHp = HP;
         score = 0;
-        txtScore.text = "SCORE : " + score.ToString("D5");
+        //txtScore.text = "SCORE : " + score.ToString("D5");
 
     }
 
@@ -96,6 +96,8 @@ public class s_Player : MonoBehaviour
                     SoundManager.Instance.PlaySE("SE_Minus");
                     AnimP.SetTrigger("bad.trg");
                     HP--;
+                    Debug.Log("å®ÇΩÇΩÇ´åÎêR");
+
                 }
             }
             else//å©ì¶Çµ
@@ -161,7 +163,7 @@ public class s_Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        zyoutai.text = check.ToString();
+        //zyoutai.text = check.ToString();
 
 
         if (HP <= 0)
