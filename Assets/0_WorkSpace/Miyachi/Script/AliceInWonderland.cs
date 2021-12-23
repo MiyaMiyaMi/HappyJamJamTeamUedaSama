@@ -12,17 +12,11 @@ public class AliceInWonderland : MonoBehaviour, IPointerEnterHandler, IPointerEx
     RectTransform rt;
     [SerializeField, Header("切り替えタイミング")] float switchValue;
     [SerializeField, Header("スピード?")] float speed;
-    AudioSource myAudio;
-
-    void Start()
-    {
-        myAudio = GetComponent<AudioSource>();
-    }
     
     public void OnPointerEnter(PointerEventData eventData)
     {
         rt = GetComponent<RectTransform>();
-        myAudio.Play();
+        SoundManager.Instance.PlaySE("SE_Cursor");
         oldScale = rt.localScale;
         scaleValue = oldScale;
         calcValue = oldScale / speed;
