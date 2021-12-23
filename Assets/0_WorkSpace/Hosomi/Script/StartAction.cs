@@ -17,7 +17,7 @@ public class StartAction : MonoBehaviour
     public void Set()
     {
         IsSet = true;
-        SoundManager.Instance.PlaySE("Chaim");
+        SoundManager.Instance.PlaySE("chaim2_");
     }
     private void FixedUpdate()
     {
