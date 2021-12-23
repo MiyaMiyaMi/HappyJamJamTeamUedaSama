@@ -20,6 +20,7 @@ public class Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         sprite = Resources.Load<Sprite>("");
         image = GetComponent<Image>();
         image.sprite = sprite;

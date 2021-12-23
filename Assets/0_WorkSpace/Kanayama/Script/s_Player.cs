@@ -13,6 +13,9 @@ public class s_Player : MonoBehaviour
     GameObject heart;
     [SerializeField] Text zyoutai;
     [SerializeField] Text txtScore;
+    [SerializeField] private Image image;
+    [SerializeField] private Sprite sprite;
+
     private int score;
 
     enum Check
@@ -52,6 +55,9 @@ public class s_Player : MonoBehaviour
                 {
                     check = Check.Out;
                     Debug.Log("é∏îs");
+                    sprite = Resources.Load<Sprite>("");
+                    image = GetComponent<Image>();
+                    image.sprite = sprite;
                 }
 
             }
@@ -62,11 +68,15 @@ public class s_Player : MonoBehaviour
                 {
                     check = Check.Success;
                     Debug.Log("ê¨å˜");
+                    sprite = Resources.Load<Sprite>("");
+                    image = GetComponent<Image>();
+                    image.sprite = sprite;
                 }
                 else if (Input.GetMouseButton(1))
                 {
                     check = Check.Out;
                     Debug.Log("é∏îs");
+
                 }
             }
 
