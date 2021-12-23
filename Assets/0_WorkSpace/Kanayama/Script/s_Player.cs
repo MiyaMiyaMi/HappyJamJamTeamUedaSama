@@ -91,7 +91,9 @@ public class s_Player : MonoBehaviour
                 else if (check == Check.Out)
                 {
                     //Œ¨‚½‚½‚«
+                    SoundManager.Instance.PlaySE("SE_Check");
                     AnimP.SetTrigger("tap.trg");
+                    SoundManager.Instance.PlaySE("SE_Minus");
                     AnimP.SetTrigger("bad.trg");
                     HP--;
                 }
@@ -99,7 +101,9 @@ public class s_Player : MonoBehaviour
             else//Œ©“¦‚µ
             {
                 //Œ¨‚½‚½‚«
+                SoundManager.Instance.PlaySE("SE_Check");
                 AnimP.SetTrigger("tap.trg");
+                SoundManager.Instance.PlaySE("SE_Minus");
                 AnimP.SetTrigger("bad.trg");
                 HP--;
             }
@@ -114,7 +118,9 @@ public class s_Player : MonoBehaviour
                 if (check == Check.Success)
                 {
                     //Œ¨‚½‚½‚«
+                    SoundManager.Instance.PlaySE("SE_Check");
                     AnimP.SetTrigger("tap.trg");
+                    SoundManager.Instance.PlaySE("SE_Plus2");
                     AnimP.SetTrigger("success.trg");
                     score++;
                     txtScore.text = "SCORE : " + score.ToString("D5");
@@ -123,7 +129,7 @@ public class s_Player : MonoBehaviour
                 //Œ©“¦‚µ
                 else if (check == Check.Out)
                 {
-                    //SoundManager.Instance.PlaySE("bad");
+                    SoundManager.Instance.PlaySE("SE_Minus");
                     AnimP.SetTrigger("miss.trg");
                     HP--;
                 }
@@ -131,6 +137,7 @@ public class s_Player : MonoBehaviour
             }
             else
             {
+                SoundManager.Instance.PlaySE("SE_Minus");
                 AnimP.SetTrigger("miss.trg");
                 Debug.Log("Œ©“¦‚µ");
                 HP--;
