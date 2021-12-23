@@ -55,7 +55,7 @@ public class s_Player : MonoBehaviour
                 {
                     check = Check.Out;
                     Debug.Log("¸”s");
-                    sprite = Resources.Load<Sprite>("Image_Student_Cheating");
+                    sprite = Resources.Load<Sprite>("Image_Student_Cheating"); // ·•ª‰æ‘œ
                     image = GetComponent<Image>();
                     image.sprite = sprite;
                 }
@@ -68,7 +68,7 @@ public class s_Player : MonoBehaviour
                 {
                     check = Check.Success;
                     Debug.Log("¬Œ÷");
-                    sprite = Resources.Load<Sprite>("Image_Student_Cheating");
+                    sprite = Resources.Load<Sprite>("Image_Student_Cheating"); // ·•ª‰æ‘œ
                     image = GetComponent<Image>();
                     image.sprite = sprite;
                 }
