@@ -39,7 +39,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         animSpeed = Player.GetComponent<Animator>().speed;
         acTimeValue = ACTime;
-        SoundManager.Instance.PlayBGM("play1");
+        SoundManager.Instance.PlayBGM("play0");
         SpawnValue = SpawnTime;
         status = Status.Tutorial;
         Player.SetActive(false);

@@ -35,7 +35,7 @@ public class s_Player : MonoBehaviour
 
         oldHp = HP;
         score = 0;
-        txtScore.text = "SCORE : " + score.ToString("D5");
+        txtScore.text = "チェック成功 : " + score.ToString("D4");
 
     }
 
@@ -95,7 +95,7 @@ public class s_Player : MonoBehaviour
                 {
                     score++;
                     SoundManager.Instance.PlaySE("SE_Plus2");
-                    txtScore.text = "SCORE : " + score.ToString("D5");
+                    txtScore.text = "チェック成功 : " + score.ToString("D4");
                 }
                 //肩たたき(誤審)
                 else if (check == Check.Out)
@@ -142,7 +142,7 @@ public class s_Player : MonoBehaviour
                     AnimP.SetTrigger("success.trg");
 
                     score++;
-                    txtScore.text = "SCORE : " + score.ToString("D5");
+                    txtScore.text = "チェック成功 : " + score.ToString("D4");
                     Animator sanim = collision.gameObject.GetComponent<Animator>();
                     sanim.SetTrigger("furimuki");
 

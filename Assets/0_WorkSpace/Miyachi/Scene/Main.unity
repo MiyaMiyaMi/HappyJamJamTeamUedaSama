@@ -393,7 +393,7 @@ PrefabInstance:
       objectReference: {fileID: 147501370}
     - target: {fileID: 4763644538667996408, guid: 635095d52cb85c644a4f7837ccac43c1, type: 3}
       propertyPath: maxGameSpeed
-      value: 5
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4763644538667996409, guid: 635095d52cb85c644a4f7837ccac43c1, type: 3}
       propertyPath: m_Name
@@ -1059,7 +1059,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 577, y: 472}
+  m_AnchoredPosition: {x: 520, y: 472}
   m_SizeDelta: {x: 1000, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1600498304
@@ -1095,7 +1095,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'SCORE : 00000'
+  m_Text: "\u30C1\u30A7\u30C3\u30AF\u6210\u529F : 0000"
 --- !u!222 &1600498305
 CanvasRenderer:
   m_ObjectHideFlags: 0
