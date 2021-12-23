@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,24 +8,29 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
     enum TutorialCheck
     {
         Null,
-        Cunning,    //ƒJƒ“ƒjƒ“ƒO‚µ‚Ä‚¢‚é
-        Through     //ƒJƒ“ƒjƒ“ƒO‚µ‚Ä‚¢‚È‚¢
+        Cunning,    //ã‚«ãƒ³ãƒ‹ãƒ³ã‚°ã—ã¦ã„ã‚‹
+        Through     //ã‚«ãƒ³ãƒ‹ãƒ³ã‚°ã—ã¦ã„ãªã„
     }
     TutorialCheck tutorial;
-
-    [SerializeField, Header("‘¬“x‚ğ–ß‚·‚Æ‚«‚Ì’l")] float speed = 3;
-    int StartCnt;                   //ŠJn‚Ü‚Å‚ÌƒJƒEƒ“ƒg@‚Q‚É‚È‚é‚ÆPlayŠJn
+    [SerializeField, Header("txtStart")] GameObject txtStart;
+    [SerializeField, Header("é€Ÿåº¦ã‚’æˆ»ã™ã¨ãã®å€¤")] float speed = 3;
+    int StartCnt;                   //é–‹å§‹ã¾ã§ã®ã‚«ã‚¦ãƒ³ãƒˆã€€ï¼’ã«ãªã‚‹ã¨Playé–‹å§‹
     bool StartFrg;
     [SerializeField, Header("0:Mouse 1:MouseLeft 2:MouseRight")] GameObject[] tutorialMouse;
     [SerializeField, Header("0:TutorialOut 1:TutorialSafe 2:StratSlide")] GameObject[] tutorialObjects;
-    GameObject objectSpawn;         //ÚG‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ì•Û‘¶  
+    GameObject objectSpawn;         //æ¥è§¦ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä¿å­˜  
     GameObject outS;
     Animator myAnim;
-
+    [SerializeField, Header("ï¿½Xï¿½|ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½x")] float spSpeed;
+    [SerializeField] Vector2 spSPos;
+    float e;
+    bool IsOutS;
+    GameObject outG;
+    GameObject safeG;
     // Start is called before the first frame update
     void Start()
     {
-
+        e = 0.0f;
         tutorial = TutorialCheck.Null;
         myAnim = GetComponent<Animator>();
         StartCnt = 0;
@@ -35,7 +40,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
         {
             tutorialMouse[i].SetActive(false);
         }
-        Instantiate(tutorialObjects[0], tutorialObjects[0].transform.position, Quaternion.identity);
+        outG = Instantiate(tutorialObjects[0], spSPos, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -73,6 +78,15 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
     // Update is called once per frame
     void Update()
     {
+        if (!IsOutS)
+        {
+            e += Time.deltaTime;
+            if (e > spSpeed)
+            {
+                safeG = Instantiate(tutorialObjects[1], spSPos, Quaternion.identity);
+                IsOutS = true;
+            }
+        }
         if (StartCnt < 2)
         {
             switch (tutorial)
@@ -80,7 +94,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
                 case TutorialCheck.Null:
                     break;
                 case TutorialCheck.Cunning:
-                    //ƒ}ƒEƒX¶ƒNƒŠƒbƒN‚Å¬Œ÷
+                    //ãƒã‚¦ã‚¹å·¦ã‚¯ãƒªãƒƒã‚¯ã§æˆåŠŸ
                     if (Input.GetMouseButtonDown(0))
                     {
                         tutorial = TutorialCheck.Null;
@@ -88,7 +102,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
                         tutorialMouse[0].SetActive(false);
                         tutorialMouse[1].SetActive(false);
                         myAnim.speed = 1;
-                        Instantiate(tutorialObjects[1], tutorialObjects[1].transform.position, Quaternion.identity);
+                        outG.tag = "Untagged";
                         StartCnt++;
                         foreach (var b in GameObject.FindGameObjectsWithTag("back"))
                         {
@@ -98,7 +112,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
              
                     break;
                 case TutorialCheck.Through:
-                    //ƒ}ƒEƒX‰EƒNƒŠƒbƒN‚Å¬Œ÷
+                    //ãƒã‚¦ã‚¹å³ã‚¯ãƒªãƒƒã‚¯ã§æˆåŠŸ
                     if (Input.GetMouseButtonDown(1))
                     {
                         tutorial = TutorialCheck.Null;
@@ -107,6 +121,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
                         objectSpawn.GetComponent<ObjectSpawn>().Speed = speed;
                         outS.GetComponent<ObjectSpawn>().Speed = speed;
                         myAnim.speed = 1;
+                        safeG.tag = "Untagged";
                         StartCnt++;
                         foreach (var b in GameObject.FindGameObjectsWithTag("back"))
                         {
@@ -120,7 +135,7 @@ public class Tutorial : SingletonMonoBehaviour<Tutorial>
         {
             if (!StartFrg)
             {
-                Instantiate(tutorialObjects[2], tutorialObjects[2].transform.position, Quaternion.identity);
+                txtStart.GetComponent<StartAction>().Set();
                 StartFrg = true;
             }
         }
