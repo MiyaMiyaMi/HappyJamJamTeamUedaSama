@@ -8,7 +8,7 @@ public class s_Player : MonoBehaviour
     [SerializeField] int HP = 1;
 
     Animator AnimP;
-    GameObject heart;
+    //GameObject heart;
 
     enum Check
     {
