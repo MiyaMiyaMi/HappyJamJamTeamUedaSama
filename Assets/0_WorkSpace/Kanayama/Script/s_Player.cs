@@ -183,7 +183,7 @@ public class s_Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        zyoutai.text = check.ToString();
+       // zyoutai.text = check.ToString();
 
 
         if (HP <= 0)
