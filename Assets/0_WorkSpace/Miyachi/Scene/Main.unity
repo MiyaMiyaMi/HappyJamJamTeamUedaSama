@@ -526,8 +526,8 @@ Canvas:
   m_GameObject: {fileID: 270660288}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1993304455}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -802,6 +802,7 @@ MonoBehaviour:
   scrollSpeed: -3
   startLine: 19.1
   deadLine: -19.1
+  IsResult: 0
   IsStop: 0
 --- !u!1001 &1007450906
 PrefabInstance:
@@ -1272,6 +1273,7 @@ MonoBehaviour:
   scrollSpeed: -3
   startLine: 19.1
   deadLine: -19.1
+  IsResult: 0
   IsStop: 0
 --- !u!1 &1802520182
 GameObject:
@@ -1571,7 +1573,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b395c6815e190bc48b0f518657177e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 400
+  speed: 10
+  kieruzikann: 5
   IsSet: 0
 --- !u!1001 &8762652613873083475
 PrefabInstance:
@@ -1640,6 +1643,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 1394a6fe4351cee4c9c971fabd16433b, type: 3}
+    - target: {fileID: 8762652614842483711, guid: f6542c8f5682b194e9e8a627ad7587f2, type: 3}
+      propertyPath: HP
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8762652614842483711, guid: f6542c8f5682b194e9e8a627ad7587f2, type: 3}
+      propertyPath: sweat
+      value: 
+      objectReference: {fileID: 1166226702}
+    - target: {fileID: 8762652614842483711, guid: f6542c8f5682b194e9e8a627ad7587f2, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f3baf23aa535c1d4caf6f9f273912e94, type: 3}
     - target: {fileID: 8762652614842483711, guid: f6542c8f5682b194e9e8a627ad7587f2, type: 3}
       propertyPath: zyoutai
       value: 
