@@ -788,12 +788,13 @@ MonoBehaviour:
   Display: {fileID: 1419528650}
   Cancel: {fileID: 107617530}
   RMaxPage: 3
-  CMaxPage: 1
+  CMaxPage: 2
   sprites:
-  - {fileID: 21300000, guid: bf29a348671b76a4e962b303677e40d6, type: 3}
-  - {fileID: 21300000, guid: 5a0a39f5edeb0c0479b0e3d46761d1a1, type: 3}
-  - {fileID: 21300000, guid: f6fd20eeb676b16448545f646b092277, type: 3}
-  - {fileID: 21300000, guid: b831cab0c405a294fa94a8810cb9ac2a, type: 3}
+  - {fileID: 21300000, guid: aef0de7aab457a144a8b1f08486c7cd2, type: 3}
+  - {fileID: 21300000, guid: 3c997e6909019aa48bfeee8198e9c629, type: 3}
+  - {fileID: 21300000, guid: 4c343064672dc4d40a67e2ef378898db, type: 3}
+  - {fileID: 21300000, guid: 71db1e77416414549b3109e27b2f8900, type: 3}
+  - {fileID: 21300000, guid: 61f37348cd803ba45ab3af9a930f33e6, type: 3}
 --- !u!1 &1419528650
 GameObject:
   m_ObjectHideFlags: 0
