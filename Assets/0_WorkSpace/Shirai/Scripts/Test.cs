@@ -5,11 +5,7 @@ using UnityEngine.UI;
 
 public class Test : MonoBehaviour
 {
-    [SerializeField]
-    private Image image;
-
-    [SerializeField]
-    private Sprite sprite;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +17,8 @@ public class Test : MonoBehaviour
     void Update()
     {
 
-        sprite = Resources.Load<Sprite>("");
-        image = GetComponent<Image>();
-        image.sprite = sprite;
+        
+        
+        
     }
 }
