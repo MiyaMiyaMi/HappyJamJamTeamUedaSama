@@ -260,7 +260,7 @@ PrefabInstance:
     - target: {fileID: 4763644538667996408, guid: 635095d52cb85c644a4f7837ccac43c1, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 5957153640345322228, guid: 767edce16886ad546ab16672e8f066e5, type: 3}
+      objectReference: {fileID: 8762652614842483707, guid: f6542c8f5682b194e9e8a627ad7587f2, type: 3}
     - target: {fileID: 4763644538667996408, guid: 635095d52cb85c644a4f7837ccac43c1, type: 3}
       propertyPath: TutorialGO
       value: 
@@ -393,6 +393,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8984296122329242033, guid: 870a7248c97262e4da797ba994bc794b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1394a6fe4351cee4c9c971fabd16433b, type: 3}
     - target: {fileID: 8984296122329242037, guid: 870a7248c97262e4da797ba994bc794b, type: 3}
       propertyPath: m_Name
       value: Tutorial

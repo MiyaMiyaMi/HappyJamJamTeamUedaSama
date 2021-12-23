@@ -22,7 +22,7 @@ public class StartAction : MonoBehaviour
     void Update()
     {
         gameObject.transform.position += new Vector3(1,0,0) * Time.deltaTime * speed;
-        if(gameObject.transform.position.x >= 1200)
+        if(gameObject.transform.position.x >= 1350)
         {
             Destroy(gameObject);
         }
