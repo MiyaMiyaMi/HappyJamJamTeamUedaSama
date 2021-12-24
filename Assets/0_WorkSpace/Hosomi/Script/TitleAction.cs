@@ -23,10 +23,12 @@ public class TitleAction : MonoBehaviour
     [SerializeField, Header("クレジットの最大ページ数")] int CMaxPage;
     [SerializeField,Header("表示する画像")]Sprite[] sprites;
     int PageCnt;        //ページカウント用
-
+    private bool IsChange;
     // Start is called before the first frame update
     void Start()
     {
+        IsChange = false;
+        FadeManager.Instance.FadeOutOnlySet();
         Ready();
         SoundManager.Instance.PlayBGM("LEMON_TEA");
     }
@@ -41,63 +43,78 @@ public class TitleAction : MonoBehaviour
 
     public void PushStart()
     {
-        if (situation == Situation.Title)
+        if (!IsChange)
         {
-            SoundManager.Instance.PlaySE("Kettei2");
+            if (situation == Situation.Title)
+            {
+                FadeManager.Instance.FadeSceneChange("Main");
+                IsChange = true;
+                SoundManager.Instance.PlaySE("Kettei2");
 
-            SceneManager.LoadScene("Main");
+               // SceneManager.LoadScene("Main");
+            }
         }
     }
 
     public void PushHowToPlay()
     {
-        if (situation == Situation.Title)
+        if (!IsChange)
         {
-            situation = Situation.HowToPlay;
-            SoundManager.Instance.PlaySE("Kettei2");
-            PageCnt = 0;
-            Display.GetComponent<Image>().sprite = sprites[PageCnt];
-            Display.SetActive(true);
-            Cancel.SetActive(true);
+            if (situation == Situation.Title)
+            {
+                situation = Situation.HowToPlay;
+                SoundManager.Instance.PlaySE("Kettei2");
+                PageCnt = 0;
+                Display.GetComponent<Image>().sprite = sprites[PageCnt];
+                Display.SetActive(true);
+                Cancel.SetActive(true);
+            }
         }
 
     }
 
     public void PushRanking()
     {
-
-        if (situation == Situation.Title)
+        if (!IsChange)
         {
-            situation = Situation.Ranking;
-            SoundManager.Instance.PlaySE("Kettei2");
-            naichilab.RankingLoader.Instance.SendScoreAndShowRanking(0, 0, "RankingGetOnly");
+            if (situation == Situation.Title)
+            {
+                situation = Situation.Ranking;
+                SoundManager.Instance.PlaySE("Kettei2");
+                naichilab.RankingLoader.Instance.SendScoreAndShowRanking(0, 0, "RankingGetOnly");
+            }
         }
     }
 
     public void PushCredit()
     {
-        if (situation == Situation.Title)
+        if (!IsChange)
         {
-            situation = Situation.Credit;
-            SoundManager.Instance.PlaySE("Kettei2");
-            PageCnt += RMaxPage;
-            Display.GetComponent<Image>().sprite = sprites[PageCnt];
-            Display.SetActive(true);
-            Cancel.SetActive(true);
+            if (situation == Situation.Title)
+            {
+                situation = Situation.Credit;
+                SoundManager.Instance.PlaySE("Kettei2");
+                PageCnt += RMaxPage;
+                Display.GetComponent<Image>().sprite = sprites[PageCnt];
+                Display.SetActive(true);
+                Cancel.SetActive(true);
+            }
         }
-
     }
 
     public void PushCancel()
     {
-        Debug.Log("aaa");
-        if(situation != Situation.Title)
+        if (!IsChange)
         {
-            situation = Situation.Title;
-            SoundManager.Instance.PlaySE("Kettei2");
-            Display.SetActive(false);
-            Cancel.SetActive(false);
-            PageCnt = 0;
+            Debug.Log("aaa");
+            if (situation != Situation.Title)
+            {
+                situation = Situation.Title;
+                SoundManager.Instance.PlaySE("Kettei2");
+                Display.SetActive(false);
+                Cancel.SetActive(false);
+                PageCnt = 0;
+            }
         }
     }
 

@@ -56,7 +56,7 @@ public class ResultManager : SingletonMonoBehaviour<ResultManager>
     bool MoveStudent(StrStudent st)
     {
         st.student.transform.position -= Vector3.left *  Time.deltaTime * stSpeed;
-        if(st.student.transform.position.x < -12)
+        if(st.student.transform.position.x < -14)
         {
             st.student.transform.position = setPoint.position;
           //  st.IsSet = true;

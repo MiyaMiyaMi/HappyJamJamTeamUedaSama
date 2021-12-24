@@ -18,6 +18,7 @@ public class s_Player : MonoBehaviour
     [SerializeField] GameObject sweat;
 
     private int score;
+    private bool IsPlay;
 
     enum Check
     {
@@ -31,6 +32,7 @@ public class s_Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        IsPlay = true;
         AnimP = gameObject.GetComponent<Animator>();
 
         oldHp = HP;
@@ -184,14 +186,18 @@ public class s_Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // zyoutai.text = check.ToString();
+        // zyoutai.text = check.ToString();
 
 
         if (HP <= 0)
         {
-            Debug.Log("GAMEOVER");
-            DataManager.Instance.scoreD = score;
-            SceneManager.LoadScene("Result");
+            if (IsPlay)
+            {
+                IsPlay = false;
+                Debug.Log("GAMEOVER");
+                DataManager.Instance.scoreD = score;
+                FadeManager.Instance.FadeSceneChange("Result");
+            }
         }
     }
 

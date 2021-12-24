@@ -37,6 +37,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     private void Start()
     {
+        FadeManager.Instance.FadeOutOnlySet();
         animSpeed = Player.GetComponent<Animator>().speed;
         acTimeValue = ACTime;
         SoundManager.Instance.PlayBGM("play0");

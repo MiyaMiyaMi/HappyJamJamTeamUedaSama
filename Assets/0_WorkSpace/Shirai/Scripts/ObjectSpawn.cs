@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectSpawn : MonoBehaviour
 {
+    [SerializeField, Header("消すX座標")] float DletePosX;
+
     [Header("Objectのスピード")]
     public float Speed = 5;        // 生徒の動きの速さ
     private Animator anim;
@@ -31,7 +33,7 @@ public class ObjectSpawn : MonoBehaviour
     void FixedUpdate()  
     {
         transform.position -= new Vector3(Time.deltaTime * Speed * GameManager.Instance.GameSpeed, 0,0);
-        if(transform.position.x <= -12)
+        if(transform.position.x <= DletePosX)
         {
             Destroy(gameObject);
         }
